@@ -1,0 +1,773 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>TypeScript | ruoxijun</title><meta name="keywords" content="typescript,vue3,es6"><meta name="author" content="ruoxijun,1460662245@qq.com"><meta name="copyright" content="ruoxijun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="TypeScript"><meta name="application-name" content="TypeScript"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="TypeScript"><meta property="og:url" content="http://ruoxijun.top/2022/07/09/vue/TypeScript/index.html"><meta property="og:site_name" content="ruoxijun"><meta property="og:description" content="TypeScriptTS 环境与常用命令1. 环境安装： 安装 TypeScript 编译工具：  1npm install -g typescript   查看 TypeScript 版本：  1tsc -V  2. 常用命令： 编译 ts 文件：  1tsc demo.ts  编译完成后会生成同"><meta property="og:locale" content="en"><meta property="og:image" content="https://ruoxijun.pythonanywhere.com/download?_r_=a2500fc6-2a91-3bb1-d8fc-d9ec0daf4da9"><meta property="article:author" content="ruoxijun"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://ruoxijun.pythonanywhere.com/download?_r_=a2500fc6-2a91-3bb1-d8fc-d9ec0daf4da9"><meta name="description" content="TypeScriptTS 环境与常用命令1. 环境安装： 安装 TypeScript 编译工具：  1npm install -g typescript   查看 TypeScript 版本：  1tsc -V  2. 常用命令： 编译 ts 文件：  1tsc demo.ts  编译完成后会生成同"><link rel="shortcut icon" href="/images/favicon.svg"><link rel="canonical" href="http://ruoxijun.top/2022/07/09/vue/TypeScript/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b3a933e91b357919bc48b2dcf700920b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-7JZFCVWT7S"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-7JZFCVWT7S');
+</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;dddccd3510d7456c85b636b70477a196&quot;}"></script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "imlr52l3x8");</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'http://43.142.114.172:8080/',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: ruoxijun","link":"Link: ","source":"Source: ruoxijun","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ruoxijun',
+  title: 'TypeScript',
+  postAI: '',
+  pageFillDescription: 'TypeScript, TS 环境与常用命令, 1. 环境安装：, 2. 常用命令：, 3. ts-node, tsconfig.json, TypeScript 语法, 1. 基础类型：, 2. 对象与函数：, 3. 断言（as）：, 3. TS 函数：, 4. 面向对象：, 1. 类的基础：, 2. 访问修饰符：, 3. 存取器：, 4. 抽象类与接口：, 5. 泛型：, 5. 命名空间：, 描述文件声明, Vue3 与 TS, 1. shims-vue.d.ts：, 2. defineComponent：, 3. 选项式 API：, 4. 组合式 API：环境与常用命令环境安装安装编译工具查看版本常用命令编译文件编译完成后会生成同名文件使用命令执行文件监听文件变化并及时编译生成配置文件此命令会在当前文件夹中生成配置文件并且执行命令会自动根据配置编译当前文件夹以及子文件夹中的所有文件执行会监听当前文件夹内包括子文件夹的所有文件并及时编译配置文件中可以指定文件编译后所在位置非必要安装可以直接运行文件不需要我们先编译在执行安装运行文件是的配置文件其中常见配置如下配置编译选项模块化模式如模块化模式指定编译后的版本编译时引入的库输出目录将编译后的合并到某个文件必须为或允许编译检查编译后删除注释只检查不编译生成文件有错误时不生成编译文件使用严格模式存在隐式时报错不存在时报错可能为时报错严格的检查空值检查的总开关指定编译编译下面已经子目录下面的所有文件排除目录单独设置需要编译的文件不常用注意使用命令行模式方式编译会忽略配置语法基础类型是的一个超集支持标准是一种给添加特性的语言扩展类型声明与基础语法表示可以是任意类型的值声明变量同时声明类型声明变量时赋值会使用值的类型作为限制报错限定方法参数只能为个数且都为类型限定返回值为类型也被限定为方法的返回值类型报错只能为联合类型这里表示可以为或类型数组值可以是数字或字符串字面量报错只能为值只能为这两个的基础类型数据类型关键字描述数字字符串布尔数组或或元组数组长度限定且位置指定类型枚举使用标识方法返回值类型表示该方法没有返回值空值变量为未定义的值永远不会出现的值方法中死循环方法抛出异常任意类型安全类型的不能直接赋值给其它变量可以赋值给赋值方式接收任意类型直接赋值报错类型判断断言利用可以接收类型二维元组别名当同一限定类型需要多次使用时我们可以为其取别名对象与函数声明时属性已确定报错只能操作对象声明的属性声明对象模板问号表示属性为可选属性声明时赋值在属性不确定时可以使用接收任意属性类型约束函数约束两个参数为返回值为断言直接赋值会报错具体值推断类型转换为字面值类型等同只能赋值为只读数组对象同理效果同上推断类型数组转换为元组推断返回值类型为报错类型为解决方法推荐使用开启空值检查操作往往会报错可以采用非空断言表示非空断言函数可选参数当有必选参数时可选参数必须声明在必选参数之后可选参数不能设置默认值任意个参数收集到数组只能作为最后一个参数声明函数重载定义重载函数签名实现重载函数面向对象类的基础定义类构造方法继承调用父类构造方法重写覆盖父类方法调用父类方法访问修饰符默认私有私有属性名建议使用下划线开头只能自身或子类访问只读属性只允许初始化赋值或构造方法赋值一次静态属性构造方法存取器定义类定义私有属性存取器建议使用此方式为属性添加方法存值取值抽象类与接口抽象类有一个或以上抽象属性方法的类就只能被声明为抽象类抽象属性抽象方法没有方法体抽象类中允许有非抽象属性方法子类必须实现所有抽象属性方法否则子类也只能为抽象类接口接口名称建议以大写开头接口只能有抽象属性类必须实现所有抽象属性方法或者继承接口成为接口类接口允许多继承多实现接口类型约束类作为类型约束多个类作为类型约束接口作为类型约束两个同名结合会自动合并设置属性类型不限制个数泛型泛型定义函数可以有多个泛型使用逗号隔开自动推断类型函数泛型指定默认类型泛型约束泛型继承接口约束类型报错数字没有属性类接口泛型默认类型报错未指定泛型类型时类型推断优先使用默认类型命名空间同文件内创建命名空间如果想让外界访问到需导入不同文件中中将命名空间导出如果想让外界访问到需导入中将命名空间导出中导入并使用还能添加子命名空间等描述文件声明在中使用第三方文件库需要在项目中配置后缀名为的文件此文件可以在项目中的任意位置它将会自动被扫描只有配置了该文件才能获得代码补全接口提示等功能在某文件中中声明需要使用的成员的描述变量函数类命名空间如页面中引入了模块在中使用所有的图片作为一个模块中使用中为我们提供好了常用的第三方库的配置文件在中搜索我们需要使用的库的配置文件然后安装即可与是为了做的适配定义文件因为文件不是一个常规的文件类型是不能理解文件是干嘛的加这一段是是告诉文件是这种类型的表明项目中文件是一个模块将组件定义作为一个类型表明我们定义的每一个组件必须是此类型原来中使用定义组件属性对于编辑器而言只是一个的类型无法有针对性的提示我们对于组件来说里应该有哪些属性在中就变成了的参数那么对参数类型的提示就可以实现对中属性的提示外还可以进行对参数的一些类型推导等操作这里表示使用不建议使用而是使用选项式作类型约束成员建议单独写在一个文件中在需要时导入即可不需要后缀定义接口作为约束作属性类型约束断言断言添加类型约束组合式限定类型接口类型约束',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-28 13:53:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="其它"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="其它"/><span class="back-menu-item-text">其它</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">ruoxijun</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Article</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-box-archive"></use></svg><span> Tunnel</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shapes"></use></svg><span> Classification</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tags"></use></svg><span> Label</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Friend</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> Friends account</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-artstation"></use></svg><span> Moments</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-envelope"></use></svg><span> Message board</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> My</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-music"></use></svg><span> Music Hall</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> Chasing</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-images"></use></svg><span> Album Set</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-fan"></use></svg><span> Conditioning</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> About</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> Search</span></a></div><input id="center-console" type="checkbox"/><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Vue/" itemprop="url">Vue</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/typescript/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>typescript</span></a><a class="article-meta__tags" href="/tags/vue3/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>vue3</span></a><a class="article-meta__tags" href="/tags/es6/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>es6</span></a></span></div></div><h1 class="post-title" itemprop="name headline">TypeScript</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2022-07-09T02:37:00.000Z" title="Created 2022-07-09 10:37:00">2022-07-09</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2023-08-28T05:53:41.518Z" title="Updated 2023-08-28 13:53:41">2023-08-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">Word count:</span><span class="word-count" title="文章字数">3.6k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">Reading time:</span><span>15min</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="TypeScript"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">Post View:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为重庆"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>重庆</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2022/07/09/vue/TypeScript/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://ruoxijun.pythonanywhere.com/download?_r_=a2500fc6-2a91-3bb1-d8fc-d9ec0daf4da9"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://ruoxijun.top/2022/07/09/vue/TypeScript/"><header><a class="post-meta-categories" href="/categories/Vue/" itemprop="url">Vue</a><a href="/tags/typescript/" tabindex="-1" itemprop="url">typescript</a><a href="/tags/vue3/" tabindex="-1" itemprop="url">vue3</a><a href="/tags/es6/" tabindex="-1" itemprop="url">es6</a><h1 id="CrawlerTitle" itemprop="name headline">TypeScript</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ruoxijun</span><time itemprop="dateCreated datePublished" datetime="2022-07-09T02:37:00.000Z" title="Created 2022-07-09 10:37:00">2022-07-09</time><time itemprop="dateCreated datePublished" datetime="2023-08-28T05:53:41.518Z" title="Updated 2023-08-28 13:53:41">2023-08-28</time></header><h1 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h1><h2 id="TS-环境与常用命令"><a href="#TS-环境与常用命令" class="headerlink" title="TS 环境与常用命令"></a>TS 环境与常用命令</h2><h3 id="1-环境安装："><a href="#1-环境安装：" class="headerlink" title="1. 环境安装："></a>1. 环境安装：</h3><ul>
+<li>安装 TypeScript 编译工具：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看 TypeScript 版本：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc -V</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-常用命令："><a href="#2-常用命令：" class="headerlink" title="2. 常用命令："></a>2. 常用命令：</h3><ol>
+<li>编译 <strong>ts</strong> 文件：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc demo.ts</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后会生成同名 js 文件，使用 node 命令 <code>node demo.js</code> 执行文件。</p>
+<ol start="2">
+<li>监听 <strong>ts</strong> 文件变化并及时编译：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc demo.ts -w</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>生成 <strong>tsconfig.json</strong> 配置文件：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc --init</span><br></pre></td></tr></table></figure>
+
+<p>此命令会在当前文件夹中生成 ts 配置文件，并且执行 <code>tsc</code> 命令会自动根据 <strong>tsconfig.json</strong> 配置编译当前文件夹以及子文件夹中的所有 <strong>ts</strong> 文件。</p>
+<p>执行 <code>tsc -w</code> 会监听当前文件夹内（包括子文件夹）的所有 <strong>ts</strong> 文件并及时编译。</p>
+<p>配置文件中 <code>&quot;outDir&quot;: &quot;./&quot;</code> 可以指定文件编译后所在位置。</p>
+<h3 id="3-ts-node"><a href="#3-ts-node" class="headerlink" title="3. ts-node:"></a>3. ts-node:</h3><p>ts-node (非必要安装)可以直接运行 ts 文件不需要我们先编译在执行。</p>
+<ul>
+<li>安装 ts-node:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g ts-node</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行 ts 文件：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts-node demo.ts</span><br></pre></td></tr></table></figure>
+
+<h2 id="tsconfig-json"><a href="#tsconfig-json" class="headerlink" title="tsconfig.json"></a>tsconfig.json</h2><p><strong>tsconfig.json</strong> 是 TypeScript 的配置文件，其中常见配置如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// 配置编译选项</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;module&quot;</span><span class="punctuation">:</span> <span class="string">&quot;commonjs&quot;</span><span class="punctuation">,</span> <span class="comment">// 模块化模式（如 es6 模块化模式）</span></span><br><span class="line">    <span class="attr">&quot;target&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ES5&quot;</span><span class="punctuation">,</span> <span class="comment">// 指定编译后的 js 版本</span></span><br><span class="line">    <span class="attr">&quot;sourceMap&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;lib&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ES6&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="comment">// 编译时引入的 es 库</span></span><br><span class="line">    <span class="attr">&quot;outDir&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./build&quot;</span><span class="punctuation">,</span> <span class="comment">// 输出目录</span></span><br><span class="line">    <span class="attr">&quot;outFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./build/app.js&quot;</span><span class="punctuation">,</span> <span class="comment">// 将编译后的 js 合并到某个文件（module 必须为 amd 或 system）</span></span><br><span class="line">    <span class="attr">&quot;allowJs&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 允许 js 编译</span></span><br><span class="line">    <span class="attr">&quot;checkjs&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 检查 js</span></span><br><span class="line">    <span class="attr">&quot;removeComments&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 编译后删除注释</span></span><br><span class="line">    <span class="attr">&quot;noEmit&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 只检查不编译生成 js 文件</span></span><br><span class="line">    <span class="attr">&quot;noEmitOnError&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 有错误时不生成编译文件</span></span><br><span class="line">    <span class="attr">&quot;alwaysStrict&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// js 使用严格模式</span></span><br><span class="line">    <span class="attr">&quot;noImplicitAny&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 存在隐式 any 时报错</span></span><br><span class="line">    <span class="attr">&quot;noImplicitReturns&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 不存在 return 时报错</span></span><br><span class="line">    <span class="attr">&quot;noImplicitThis&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// this 可能为 any 时报错</span></span><br><span class="line">    <span class="attr">&quot;strictNullChecks&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 严格的检查空值</span></span><br><span class="line">    <span class="attr">&quot;strict&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> <span class="comment">// 检查的总开关</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// 指定编译</span></span><br><span class="line">  <span class="attr">&quot;include&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;./src/**/*&quot;</span><span class="punctuation">,</span> <span class="comment">// 编译src下面已经子目录下面的所有文件</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// 排除目录</span></span><br><span class="line">  <span class="attr">&quot;exclude&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;node_modules&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span> <span class="comment">// 单独设置需要编译的文件（不常用）</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意使用命令行模式 <code>tsc fileName.ts</code> 方式编译会忽略 <strong>tsconfig</strong> 配置。</p>
+<h2 id="TypeScript-语法"><a href="#TypeScript-语法" class="headerlink" title="TypeScript 语法"></a>TypeScript 语法</h2><h3 id="1-基础类型："><a href="#1-基础类型：" class="headerlink" title="1. 基础类型："></a>1. 基础类型：</h3><ul>
+<li><p>TypeScript 是 JavaScript 的一个超集，支持 ECMAScript 6 标准。</p>
+</li>
+<li><p>TypeScript 是一种给 JavaScript 添加特性的语言扩展。</p>
+</li>
+</ul>
+<ol>
+<li>类型声明与基础语法：</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> test; <span class="comment">// let test:any; // 表示可以是任意类型的值</span></span><br><span class="line">test = <span class="literal">true</span>;</span><br><span class="line">test = <span class="string">&quot;str&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">str</span>:<span class="built_in">string</span> = <span class="string">&quot;str&quot;</span>; <span class="comment">// 声明变量同时声明类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> isTrue = <span class="literal">true</span>; <span class="comment">// 声明变量时赋值，会使用值的类型作为限制</span></span><br><span class="line"><span class="comment">// isTrue = &quot;str&quot;; // 报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 限定方法参数只能为个数2且都为 number 类型，限定返回值为 number</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1:<span class="built_in">number</span>, num2:<span class="built_in">number</span></span>):<span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> sum = <span class="title function_">add</span>(<span class="number">1</span>, <span class="number">1</span>); <span class="comment">// sum 类型也被限定为方法的返回值类型</span></span><br><span class="line"><span class="comment">// sum = &quot;str&quot;; // 报错，sum 只能为 number</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">info</span>: <span class="built_in">string</span>|<span class="built_in">number</span>; <span class="comment">// 联合类型，这里表示可以为 string 或 number 类型</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">arr</span>: (<span class="built_in">string</span>|<span class="built_in">number</span>)[]; <span class="comment">// 数组值可以是数字或字符串</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">num</span>:<span class="number">10</span>; <span class="comment">// 字面量</span></span><br><span class="line"><span class="comment">// num = 11; // 报错，只能为10</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">sex</span>:<span class="string">&quot;nan&quot;</span>|<span class="string">&quot;nv&quot;</span>; <span class="comment">// 值只能为这两个</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>TS 的基础类型：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>关键字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数字</td>
+<td>number</td>
+<td><code>let num:number = 1;</code></td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>string</td>
+<td><code>let str:string = &quot;str&quot;;</code></td>
+</tr>
+<tr>
+<td>布尔</td>
+<td>boolean</td>
+<td><code>let flag:boolean = true;</code></td>
+</tr>
+<tr>
+<td>数组</td>
+<td>Array 或 []</td>
+<td><code>let arr:number[];</code> 或 <code>let arr:Array&lt;number&gt;;</code></td>
+</tr>
+<tr>
+<td>元组</td>
+<td></td>
+<td><code>let arr:[number, string]</code> 数组长度限定且位置指定类型</td>
+</tr>
+<tr>
+<td>枚举</td>
+<td>enum</td>
+<td><code>enum Color &#123;Red, Green&#125;</code> 使用： <code>let c:Color = Color.Red;//1</code></td>
+</tr>
+<tr>
+<td>void</td>
+<td>void</td>
+<td>标识方法返回值类型，表示该方法没有返回值</td>
+</tr>
+<tr>
+<td>null</td>
+<td>null</td>
+<td>空值</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>undefined</td>
+<td>变量为未定义的值</td>
+</tr>
+<tr>
+<td>never</td>
+<td>never</td>
+<td>永远不会出现的值（方法中死循环、方法抛出异常）</td>
+</tr>
+<tr>
+<td>any</td>
+<td>any</td>
+<td>任意类型</td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>unknown</td>
+<td>安全类型的 any（不能直接赋值给其它变量，可以赋值给 any）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>unknown 赋值方式：</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">test</span>:<span class="built_in">unknown</span> = <span class="number">0</span>;</span><br><span class="line">test = <span class="string">&quot;str&quot;</span>; <span class="comment">// 接收任意类型</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">str</span>:<span class="built_in">string</span> = <span class="string">&quot;str&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str = test; // 直接赋值报错</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> test === <span class="string">&quot;string&quot;</span>) &#123; <span class="comment">// 类型判断</span></span><br><span class="line">  str = test;</span><br><span class="line">&#125;</span><br><span class="line">str = test <span class="keyword">as</span> <span class="built_in">string</span>; <span class="comment">// 断言</span></span><br><span class="line">str = &lt;<span class="built_in">string</span>&gt;test;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用 any</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">s</span>:<span class="built_in">any</span> = test; <span class="comment">// any 可以接收 unknown 类型</span></span><br><span class="line">str = s;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>二维元组：</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">arr</span>:[<span class="built_in">string</span>,<span class="built_in">number</span>][] = [</span><br><span class="line">  [<span class="string">&quot;str&quot;</span>,<span class="number">1</span>],</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>type 别名：</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当同一限定类型需要多次使用时我们可以为其取别名</span></span><br><span class="line"><span class="keyword">type</span> myType = <span class="built_in">string</span> | <span class="built_in">number</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">val</span>:myType = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-对象与函数："><a href="#2-对象与函数：" class="headerlink" title="2. 对象与函数："></a>2. 对象与函数：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123; <span class="comment">// 声明时属性已确定</span></span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;o&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// o.age = 18; // 报错，只能操作对象声明的属性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">user</span>:&#123;<span class="attr">name</span>:<span class="built_in">string</span>, age?:<span class="built_in">number</span>&#125;; <span class="comment">// 声明对象模板，问号表示属性为可选属性</span></span><br><span class="line">user = &#123;<span class="attr">name</span>: <span class="string">&quot;user&quot;</span>&#125;</span><br><span class="line"><span class="comment">// let user:&#123;name:string&#125; = &#123;name: &quot;user&quot;&#125;; // 声明时赋值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在属性不确定时可以使用 [name:string]:any 接收任意属性</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">userinfo</span>:&#123;<span class="attr">name</span>:<span class="built_in">string</span>, [<span class="attr">name</span>:<span class="built_in">string</span>]:<span class="built_in">any</span>&#125;</span><br><span class="line">userinfo = &#123;<span class="attr">name</span>: <span class="string">&quot;userinfo&quot;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">sex</span>: <span class="string">&quot;nv&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &amp; 类型约束</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">o</span>: &#123;<span class="attr">name</span>:<span class="built_in">string</span>&#125; &amp; &#123;<span class="attr">age</span>:<span class="built_in">number</span>&#125;;</span><br><span class="line">o = &#123;<span class="attr">name</span>:<span class="string">&quot;o&quot;</span>, <span class="attr">age</span>:<span class="number">18</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数约束</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">fun1</span>:<span class="function">(<span class="params">a:<span class="built_in">number</span>, b:<span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">number</span>; <span class="comment">// 两个参数为 number，返回值为number</span></span><br><span class="line">fun1 = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a*b;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-断言（as）："><a href="#3-断言（as）：" class="headerlink" title="3. 断言（as）："></a>3. 断言（as）：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params">n:<span class="built_in">string</span>|<span class="built_in">number</span></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">len</span>:<span class="built_in">number</span>;</span><br><span class="line">  len = (n <span class="keyword">as</span> <span class="built_in">string</span>).<span class="property">length</span>; <span class="comment">// 直接赋值会报错</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体值推断类型转换为字面值类型</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;str&quot;</span> <span class="keyword">as</span> <span class="keyword">const</span>; <span class="comment">// 等同：let str:&quot;str&quot;;</span></span><br><span class="line">str = <span class="string">&quot;str&quot;</span>; <span class="comment">// 只能赋值为 &quot;str&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="string">&quot;str&quot;</span>, <span class="number">1</span>] <span class="keyword">as</span> <span class="keyword">const</span>; <span class="comment">// 只读数组（对象同理）</span></span><br><span class="line"><span class="comment">// let arr = &lt;const&gt;[&quot;str&quot;, 1]; // 效果同上</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 推断类型数组转换为元组</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ew</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> [<span class="string">&quot;str&quot;</span>, <span class="number">1</span>]; <span class="comment">// 推断返回值类型为 (string|number)[]</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> [a, b] = <span class="title function_">ew</span>();</span><br><span class="line"><span class="comment">// a.length; // 报错，a 类型为string|number</span></span><br><span class="line"><span class="comment">/** 解决方法：</span></span><br><span class="line"><span class="comment"> * return [&quot;str&quot;, 1] as const; // 推荐使用</span></span><br><span class="line"><span class="comment"> * ew() as [string, number] </span></span><br><span class="line"><span class="comment"> * (a as string).length</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 开启空值检查 dom 操作往往会报错，可以采用非空断言</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">body</span>:<span class="title class_">HTMLBodyElement</span> = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;body&#x27;</span>)!; <span class="comment">// !表示非空断言</span></span><br><span class="line"><span class="comment">// let body:HTMLBodyElement = document.querySelector(&#x27;body&#x27;) as HTMLBodyElement;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-TS-函数："><a href="#3-TS-函数：" class="headerlink" title="3. TS 函数："></a>3. TS 函数：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// let fun:Function = function(a:number) &#123;&#125;</span></span><br><span class="line"><span class="keyword">type</span> myFun = <span class="function">(<span class="params">n:<span class="built_in">number</span></span>)=&gt;</span><span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">fun</span>:myFun = <span class="keyword">function</span>(<span class="params">a:<span class="built_in">number</span></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// n? 可选参数，当有必选参数时可选参数必须声明在必选参数之后</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">fun2</span>:<span class="function">(<span class="params">n?:<span class="built_in">number</span></span>)=&gt;</span><span class="built_in">void</span> = <span class="function">()=&gt;</span>&#123;&#125;; <span class="comment">// 可选参数不能设置默认值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 任意个参数收集到数组，只能作为最后一个参数声明</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">fun3</span>:<span class="function">(<span class="params">...n:<span class="built_in">any</span>[]</span>)=&gt;</span><span class="built_in">void</span> = <span class="function">(<span class="params">...n:<span class="built_in">any</span>[]</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(n);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 函数重载 */</span></span><br><span class="line"><span class="comment">// 定义重载函数签名</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">disp</span>(<span class="params">s1:<span class="built_in">string</span></span>):<span class="built_in">void</span>; </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">disp</span>(<span class="params">n1:<span class="built_in">number</span>,s1:<span class="built_in">string</span></span>):<span class="built_in">void</span>; </span><br><span class="line"><span class="comment">// 实现重载函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">disp</span>(<span class="params">x:<span class="built_in">any</span>,y?:<span class="built_in">any</span></span>):<span class="built_in">void</span> &#123; </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x); </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(y); </span><br><span class="line">&#125; </span><br><span class="line"><span class="title function_">disp</span>(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"><span class="title function_">disp</span>(<span class="number">1</span>,<span class="string">&quot;xyz&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-面向对象："><a href="#4-面向对象：" class="headerlink" title="4. 面向对象："></a>4. 面向对象：</h3><h4 id="1-类的基础："><a href="#1-类的基础：" class="headerlink" title="1. 类的基础："></a>1. 类的基础：</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 构造方法</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">say</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">person</span>:<span class="title class_">Person</span> = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;class&quot;</span>);</span><br><span class="line">person.<span class="property">name</span> = <span class="string">&quot;John&quot;</span>;</span><br><span class="line">person.<span class="title function_">say</span>(); <span class="comment">// John</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// extends 继承</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span> &#123;</span><br><span class="line">  <span class="attr">school</span>:<span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name:<span class="built_in">string</span>, school:<span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(name); <span class="comment">// 调用父类构造方法</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">school</span> = school;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 重写（覆盖）父类方法</span></span><br><span class="line">  <span class="title function_">say</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">super</span>.<span class="title function_">say</span>(); <span class="comment">// 调用父类方法</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">school</span>+ <span class="string">&quot; &quot;</span> + <span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> student = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;student&quot;</span>, <span class="string">&quot;myScholl&quot;</span>);</span><br><span class="line">student.<span class="title function_">say</span>(); <span class="comment">// student，myScholl student</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-访问修饰符："><a href="#2-访问修饰符：" class="headerlink" title="2. 访问修饰符："></a>2. 访问修饰符：</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="attr">name</span>: <span class="built_in">string</span>; <span class="comment">// 默认 public</span></span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_age</span>: <span class="built_in">number</span>; <span class="comment">// private 私有（私有属性名建议使用下划线开头）</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="attr">sex</span>: <span class="built_in">string</span>; <span class="comment">// protected 只能自身或子类访问</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">sfz</span>: <span class="built_in">string</span>; <span class="comment">// readonly 只读属性（只允许初始化赋值或构造方法赋值一次）</span></span><br><span class="line">  <span class="keyword">static</span> <span class="attr">num</span>: <span class="built_in">number</span>; <span class="comment">// static 静态属性</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 构造方法</span></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">say</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-存取器："><a href="#3-存取器：" class="headerlink" title="3. 存取器："></a>3. 存取器：</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">_name</span>: <span class="built_in">string</span>; <span class="comment">// 定义私有属性</span></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 存取器（建议使用此方式为属性添加 get、set 方法）</span></span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">name</span>(): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;class&quot;</span>);</span><br><span class="line">person.<span class="property">name</span> = <span class="string">&quot;John&quot;</span>; <span class="comment">// 存值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>); <span class="comment">// 取值</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-抽象类与接口："><a href="#4-抽象类与接口：" class="headerlink" title="4. 抽象类与接口："></a>4. 抽象类与接口：</h4><ol>
+<li>抽象类：</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 有一个（或以上）抽象属性（方法）的类就只能被声明为抽象类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">abstract</span> <span class="attr">name</span>: <span class="built_in">string</span>; <span class="comment">// 抽象属性</span></span><br><span class="line">  <span class="keyword">abstract</span> <span class="title function_">run</span>(): <span class="built_in">void</span>; <span class="comment">// 抽象方法没有方法体</span></span><br><span class="line">  <span class="comment">// 抽象类中允许有非抽象属性（方法）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子类必须实现所有抽象属性（方法），否则子类也只能为抽象类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">run</span>(): <span class="built_in">void</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>接口（接口名称建议以大写 <strong>I</strong> 开头）：</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interface 接口只能有抽象属性</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="title function_">run</span>(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类必须实现所有抽象属性（方法），或者继承接口成为接口类（接口允许多继承、多实现）</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">run</span>(): <span class="built_in">void</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>接口类型约束：</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类作为类型约束</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&#x27;John&#x27;</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span> = <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">p</span>:<span class="title class_">Person</span> = <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="attr">p2</span>:<span class="title class_">Person</span> = &#123;<span class="attr">name</span>: <span class="string">&#x27;hello&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">MyObj1</span> = &#123;<span class="attr">name</span>:<span class="built_in">string</span>, <span class="attr">age</span>:<span class="built_in">number</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">myObj</span>:<span class="title class_">MyObj1</span> = &#123;<span class="attr">name</span>: <span class="string">&#x27;hello&#x27;</span>, <span class="attr">age</span>:<span class="number">20</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多个类作为类型约束</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">MyObj2</span> = &#123;<span class="attr">name</span>:<span class="built_in">string</span>&#125; | &#123;<span class="attr">age</span>:<span class="built_in">number</span>&#125;;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">MyObj3</span> = &#123;<span class="attr">name</span>:<span class="built_in">string</span>&#125; &amp; &#123;<span class="attr">age</span>:<span class="built_in">number</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口作为类型约束</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Interface1</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">interface1</span>:<span class="title class_">Interface1</span> = &#123;<span class="attr">name</span>: <span class="string">&#x27;hello&#x27;</span>, <span class="attr">age</span>:<span class="number">20</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 两个同名结合会自动合并</span></span><br><span class="line"><span class="keyword">interface</span> A &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> A &#123;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">  sex?: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">a</span>:A = &#123;<span class="attr">name</span>: <span class="string">&#x27;A&#x27;</span>, <span class="attr">age</span>:<span class="number">20</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置属性类型不限制个数</span></span><br><span class="line"><span class="keyword">interface</span> B &#123;</span><br><span class="line">  [<span class="attr">key</span>: <span class="built_in">number</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">b</span>:B = &#123;<span class="number">1</span>: <span class="string">&#x27;1&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;2&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;3&#x27;</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-泛型："><a href="#5-泛型：" class="headerlink" title="5. 泛型："></a>5. 泛型：</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 泛型定义函数（可以有多个泛型使用逗号隔开）</span></span><br><span class="line"><span class="keyword">function</span> fun&lt;T&gt;(<span class="attr">arg</span>:T):T &#123;</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">num</span>:<span class="built_in">number</span> = fun&lt;<span class="built_in">number</span>&gt;(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">let</span> <span class="attr">o</span>:&#123;<span class="attr">name</span>:<span class="built_in">string</span>&#125; = fun&lt;&#123;<span class="attr">name</span>:<span class="built_in">string</span>&#125;&gt;(&#123;<span class="attr">name</span>: <span class="string">&quot;name&quot;</span>&#125;);</span><br><span class="line"><span class="keyword">let</span> <span class="attr">str</span>:<span class="built_in">string</span> = <span class="title function_">fun</span>(<span class="string">&quot;str&quot;</span>); <span class="comment">// 自动推断类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数泛型指定默认类型</span></span><br><span class="line"><span class="keyword">const</span> fun2 = &lt;T=<span class="built_in">number</span>&gt;(<span class="attr">arg</span>:T):<span class="function"><span class="params">T</span> =&gt;</span> arg;</span><br><span class="line"><span class="keyword">let</span> num2 = <span class="title function_">fun2</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 泛型约束</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ILength</span> &#123;</span><br><span class="line">  <span class="attr">length</span>:<span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> getLength&lt;T <span class="keyword">extends</span> <span class="title class_">ILength</span>&gt;(<span class="attr">arg</span>:T):<span class="built_in">number</span> &#123; <span class="comment">// 泛型继承接口约束类型</span></span><br><span class="line">  <span class="keyword">return</span> arg.<span class="property">length</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// getLength(123); // 报错，数字没有 length 属性</span></span><br><span class="line"><span class="title function_">getLength</span>(<span class="string">&quot;123&quot;</span>);</span><br><span class="line"><span class="title function_">getLength</span>(&#123;<span class="attr">name</span>: <span class="string">&quot;1&quot;</span>, <span class="attr">length</span>: <span class="number">1</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类（接口）泛型默认类型</span></span><br><span class="line"><span class="keyword">interface</span> IA&lt;T1=<span class="built_in">string</span>,T2=<span class="built_in">number</span>&gt; &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="variable constant_">T1</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="variable constant_">T2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">ia1</span>:<span class="variable constant_">IA</span>&lt;<span class="built_in">number</span>, <span class="built_in">number</span>&gt; = &#123; <span class="attr">name</span>: <span class="number">1</span>, <span class="attr">age</span>: <span class="number">1</span> &#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">ia2</span>:<span class="variable constant_">IA</span> = &#123;</span><br><span class="line">  <span class="comment">// name: 2, // 报错未指定泛型类型时，类型推断优先使用默认类型</span></span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;2&quot;</span>, <span class="attr">age</span>: <span class="number">2</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-命名空间："><a href="#5-命名空间：" class="headerlink" title="5. 命名空间："></a>5. 命名空间：</h3><ol>
+<li>同文件内：</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建命名空间</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">One</span> &#123;</span><br><span class="line">  <span class="comment">// 如果想让外界访问到需 export 导入</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">n:<span class="built_in">number</span></span>):<span class="built_in">number</span> &#123; <span class="keyword">return</span> n; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">Two</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">n:<span class="built_in">string</span></span>):<span class="built_in">string</span> &#123; <span class="keyword">return</span> n; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">One</span>.<span class="title function_">add</span>(<span class="number">1</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Two</span>.<span class="title function_">add</span>(<span class="string">&quot;2&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>不同文件中：</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* One.ts 中将命名空间导出 */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">namespace</span> <span class="title class_">One</span> &#123;</span><br><span class="line">  <span class="comment">// 如果想让外界访问到需 export 导入</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">n:<span class="built_in">number</span></span>):<span class="built_in">number</span> &#123; <span class="keyword">return</span> n; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* two.ts 中将命名空间导出 */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">namespace</span> <span class="title class_">Two</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">n:<span class="built_in">string</span></span>):<span class="built_in">string</span> &#123; <span class="keyword">return</span> n; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* main.ts 中导入并使用 */</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">One</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./One&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Two</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./Two&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">One</span>.<span class="title function_">add</span>(<span class="number">1</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Two</span>.<span class="title function_">add</span>(<span class="string">&quot;2&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>还能添加子命名空间等。</p>
+<h2 id="描述文件声明"><a href="#描述文件声明" class="headerlink" title="描述文件声明"></a>描述文件声明</h2><ul>
+<li><p>在 TS 中使用第三方 js 文件库需要在项目中配置后缀名为 <strong>.d.ts</strong> 的文件，此文件可以在项目中的任意位置它将会自动被扫描。</p>
+</li>
+<li><p>只有配置了该文件才能获得代码补全，接口提示等功能。</p>
+</li>
+</ul>
+<ol>
+<li>在某 js 文件中：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ewhost = <span class="string">&quot;1&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ewshop</span>(<span class="params">n</span>)&#123; <span class="keyword">return</span> n &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>) &#123; <span class="variable language_">this</span>.<span class="property">name</span> = <span class="string">&quot;John&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>config**.d.ts** 中：</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明需要使用的成员的描述</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">let</span> <span class="attr">ewhost</span>: <span class="built_in">string</span>; <span class="comment">// 变量</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">function</span> <span class="title function_">ewshop</span>(<span class="params">n:<span class="built_in">number</span></span>):<span class="built_in">number</span>; <span class="comment">// 函数</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;<span class="attr">name</span>:<span class="built_in">string</span>;&#125;; <span class="comment">// 类</span></span><br><span class="line"><span class="comment">// 命名空间（如页面中引入了 jquery）</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> $ &#123;</span><br><span class="line">  <span class="comment">// $.get(&quot;apy&quot;, function(res)&#123;&#125;);</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">get</span>(<span class="params">url: <span class="built_in">string</span>, fn:(res:<span class="built_in">object</span>)=&gt;<span class="built_in">void</span></span>): <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模块</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&quot;mymodule&quot;</span> &#123;</span><br><span class="line">  <span class="keyword">export</span>  <span class="keyword">function</span> <span class="title function_">join</span>(<span class="params">arr:<span class="built_in">any</span>[]</span>):<span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 在 ts 中使用</span></span><br><span class="line"><span class="comment">import mymodule from &quot;mymodule&quot;;</span></span><br><span class="line"><span class="comment">mymodule.join(&quot;1&quot;,&quot;2&quot;);</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有的 png 图片，作为一个模块</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&quot;*.png&quot;</span>;</span><br><span class="line"><span class="comment">// ts 中使用 import myimg from &quot;./myimg&quot;;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><a target="_blank" rel="noopener" href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types">DefinitelyTyped</a> 中为我们提供好了常用的第三方 js 库的 <strong>.d.ts</strong> 配置文件，在 <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/dt/search?search=">TypeScript: Search for typed packages (typescriptlang.org)</a> 中搜索我们需要使用的库的配置文件然后安装即可。</li>
+</ol>
+<h2 id="Vue3-与-TS"><a href="#Vue3-与-TS" class="headerlink" title="Vue3 与 TS"></a>Vue3 与 TS</h2><h3 id="1-shims-vue-d-ts："><a href="#1-shims-vue-d-ts：" class="headerlink" title="1. shims-vue.d.ts："></a>1. shims-vue.d.ts：</h3><p>shims-vue.d.ts 是为了 typescript 做的适配定义文件，因为 vue 文件不是一个常规的文件类型，ts 是不能理解 vue 文件是干嘛的，加这一段是是告诉 ts，vue 文件是这种类型的：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* eslint-disable */</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&#x27;*.vue&#x27;</span> &#123; <span class="comment">// 表明 ts 项目中 vue 文件是一个模块</span></span><br><span class="line">  <span class="keyword">import</span> <span class="keyword">type</span> &#123; <span class="title class_">DefineComponent</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span> <span class="comment">// 将组件定义作为一个类型</span></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">component</span>: <span class="title class_">DefineComponent</span>&lt;&#123;&#125;, &#123;&#125;, <span class="built_in">any</span>&gt; <span class="comment">// 表明我们定义的每一个组件必须是此类型</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> component</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-defineComponent："><a href="#2-defineComponent：" class="headerlink" title="2. defineComponent："></a>2. defineComponent：</h3><ul>
+<li>原来 vue 中使用 <code>export default &#123;&#125;</code> 定义组件属性，对于编辑器而言 {} 只是一个 Object 的类型，无法有针对性的提示我们对于 vue 组件来说 {} 里应该有哪些属性。</li>
+<li>在 TypeScript 中 {} 就变成了 defineComponent 的参数，那么对参数类型的提示，就可以实现对 {} 中属性的提示，外还可以进行对参数的一些类型推导等操作。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这里 lang 表示使用 ts --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> &#123; defineComponent &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> <span class="title class_">HelloWorld</span> <span class="keyword">from</span> <span class="string">&#x27;@/components/HelloWorld.vue&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 不建议使用 export default &#123;&#125; 而是使用 export default defineComponent(&#123;&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">HelloWorld</span>,</span></span><br><span class="line"><span class="language-javascript">  &#125;,</span></span><br><span class="line"><span class="language-javascript">&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-选项式-API："><a href="#3-选项式-API：" class="headerlink" title="3. 选项式 API："></a>3. 选项式 API：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineComponent, <span class="title class_">PropType</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 作类型约束成员建议单独写在一个 ts 文件中，在需要时导入即可（不需要 .ts 后缀）</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">User</span> &#123; <span class="attr">name</span>:<span class="built_in">string</span> &#125; <span class="comment">// 定义接口作为约束</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>(&#123;</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">user</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="title class_">Object</span> <span class="keyword">as</span> <span class="title class_">PropType</span>&lt;<span class="title class_">User</span>&gt;, <span class="comment">// PropType 作 props 属性类型约束</span></span><br><span class="line">      <span class="title function_">default</span>():<span class="title class_">User</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">name</span>: <span class="string">&#x27;user&#x27;</span> &#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">msg</span>: <span class="string">&#x27;Hello&#x27;</span> <span class="keyword">as</span> <span class="built_in">string</span>, <span class="comment">// 断言</span></span><br><span class="line">      <span class="attr">stu</span>: <span class="title class_">Object</span> <span class="keyword">as</span> <span class="title class_">User</span>, <span class="comment">// 断言添加类型约束</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">mounted</span>():<span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">msg</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-组合式-API："><a href="#4-组合式-API：" class="headerlink" title="4. 组合式 API："></a>4. 组合式 API：</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">interface</span> <span class="title class_">User</span> &#123; <span class="attr">name</span>:<span class="built_in">string</span> &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> msg = ref&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;hello&#x27;</span>); <span class="comment">// 限定类型</span></span><br><span class="line">    <span class="keyword">const</span> stu = reactive&lt;<span class="title class_">User</span>&gt;(&#123;<span class="attr">name</span>: <span class="string">&#x27;user&#x27;</span>&#125;); <span class="comment">// 接口类型约束</span></span><br><span class="line">    <span class="title function_">onMounted</span>(():<span class="function"><span class="params">void</span>=&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(msg.<span class="property">value</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; msg, stu, &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">ruoxijun</div><div class="post-copyright__author_desc">若惜君</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://ruoxijun.top/2022/07/09/vue/TypeScript/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://ruoxijun.top/2022/07/09/vue/TypeScript/')">TypeScript</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://ruoxijun.top/2022/07/09/vue/TypeScript/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=TypeScript&amp;url=http://ruoxijun.top/2022/07/09/vue/TypeScript/&amp;pic=https://ruoxijun.pythonanywhere.com/download?_r_=a2500fc6-2a91-3bb1-d8fc-d9ec0daf4da9" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/typescript/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>typescript<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/vue3/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>vue3<span class="tagsPageCount">2</span></a><a class="post-meta__box__tags" href="/tags/es6/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>es6<span class="tagsPageCount">2</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://ruoxijun.pythonanywhere.com/download?_r_=f30d14e7-debe-45fb-1346-283faa7a0041" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/12/vue/vue3/"><img class="prev-cover" src="https://ruoxijun.pythonanywhere.com/download?_r_=ab352022-1cd5-e768-c9f7-e7936e04c715" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Vue3</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/02/interest/wsl/"><img class="next-cover" src="https://ruoxijun.pythonanywhere.com/download?_r_=335e8f34-96fa-f8ec-042e-68f470854f7f" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">wsl</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/02/12/vue/vue3/" title="Vue3"><img class="cover" src="https://ruoxijun.pythonanywhere.com/download?_r_=ab352022-1cd5-e768-c9f7-e7936e04c715" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2023-11-10</div><div class="title">Vue3</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" ait="status"/></div></div><div class="author-info__description"><span>最是人间留不住，<br/>朱颜辞镜花辞树。<span></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ruoxijun</h1><div class="author-info__desc">若惜君</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://ruoxijun.top/" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript"><span class="toc-number">1.</span> <span class="toc-text">TypeScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TS-%E7%8E%AF%E5%A2%83%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">TS 环境与常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 环境安装：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 常用命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ts-node"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. ts-node:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tsconfig-json"><span class="toc-number">1.2.</span> <span class="toc-text">tsconfig.json</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TypeScript-%E8%AF%AD%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">TypeScript 语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 基础类型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 对象与函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%96%AD%E8%A8%80%EF%BC%88as%EF%BC%89%EF%BC%9A"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 断言（as）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TS-%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">1.3.4.</span> <span class="toc-text">3. TS 函数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%9A"><span class="toc-number">1.3.5.</span> <span class="toc-text">4. 面向对象：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%B1%BB%E7%9A%84%E5%9F%BA%E7%A1%80%EF%BC%9A"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">1. 类的基础：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6%EF%BC%9A"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">2. 访问修饰符：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%AD%98%E5%8F%96%E5%99%A8%EF%BC%9A"><span class="toc-number">1.3.5.3.</span> <span class="toc-text">3. 存取器：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%9A"><span class="toc-number">1.3.5.4.</span> <span class="toc-text">4. 抽象类与接口：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%B3%9B%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.3.5.5.</span> <span class="toc-text">5. 泛型：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%EF%BC%9A"><span class="toc-number">1.3.6.</span> <span class="toc-text">5. 命名空间：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E6%96%87%E4%BB%B6%E5%A3%B0%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">描述文件声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue3-%E4%B8%8E-TS"><span class="toc-number">1.5.</span> <span class="toc-text">Vue3 与 TS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-shims-vue-d-ts%EF%BC%9A"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. shims-vue.d.ts：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-defineComponent%EF%BC%9A"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. defineComponent：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%80%89%E9%A1%B9%E5%BC%8F-API%EF%BC%9A"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 选项式 API：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%84%E5%90%88%E5%BC%8F-API%EF%BC%9A"><span class="toc-number">1.5.4.</span> <span class="toc-text">4. 组合式 API：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/29/java/springboot/mybatisplus/" title="MyBatis-Plus"><img src="https://ruoxijun.pythonanywhere.com/download?_r_=f30d14e7-debe-45fb-1346-283faa7a0041" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatis-Plus"/></a><div class="content"><a class="title" href="/2023/04/29/java/springboot/mybatisplus/" title="MyBatis-Plus">MyBatis-Plus</a><time datetime="2023-04-29T02:10:14.000Z" title="Created 2023-04-29 10:10:14">2023-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/29/java/springboot/SpringSecurity/" title="SpringSecurity"><img src="https://ruoxijun.pythonanywhere.com/download?_r_=5a5003e3-92c5-3611-28f4-8d3a9b21f9a5" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringSecurity"/></a><div class="content"><a class="title" href="/2023/04/29/java/springboot/SpringSecurity/" title="SpringSecurity">SpringSecurity</a><time datetime="2023-04-29T02:10:14.000Z" title="Created 2023-04-29 10:10:14">2023-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/20/interest/Arduino/" title="Arduino"><img src="https://ruoxijun.pythonanywhere.com/download?_r_=c4fafbfa-6984-2bc1-47bd-1acee510172d" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arduino"/></a><div class="content"><a class="title" href="/2023/04/20/interest/Arduino/" title="Arduino">Arduino</a><time datetime="2023-04-20T12:43:00.000Z" title="Created 2023-04-20 20:43:00">2023-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/15/interest/ZeroTermux/" title="ZeroTermux"><img src="https://ruoxijun.pythonanywhere.com/download?_r_=1d534e4f-2fda-eb82-af2c-c257a6ec01e7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ZeroTermux"/></a><div class="content"><a class="title" href="/2023/04/15/interest/ZeroTermux/" title="ZeroTermux">ZeroTermux</a><time datetime="2023-04-15T12:45:00.000Z" title="Created 2023-04-15 20:45:00">2023-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/02/interest/%E4%BA%91%E5%8E%9F%E7%94%9F/" title="云原生"><img src="https://ruoxijun.pythonanywhere.com/download?_r_=2cb3a87a-57a7-5acb-732e-b05c1d5d54e4" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="云原生"/></a><div class="content"><a class="title" href="/2023/04/02/interest/%E4%BA%91%E5%8E%9F%E7%94%9F/" title="云原生">云原生</a><time datetime="2023-04-02T02:04:00.000Z" title="Created 2023-04-02 10:04:00">2023-04-02</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://bu.dusays.com/2021/01/15/078d1936ddf32.png" alt="大佬带我~" title="大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2023 By <a class="footer-bar-link" href="/" title="ruoxijun" target="_blank">ruoxijun</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = []
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.0.15/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" href="https://ruoxijun.top/" title="湘ICP备-不备案号">湘ICP备-不备案号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">49</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">117</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">10</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="其它"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="其它"/><span class="back-menu-item-text">其它</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Article</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-box-archive"></use></svg><span> Tunnel</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shapes"></use></svg><span> Classification</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tags"></use></svg><span> Label</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Friend</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> Friends account</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-artstation"></use></svg><span> Moments</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-envelope"></use></svg><span> Message board</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> My</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-music"></use></svg><span> Music Hall</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> Chasing</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-images"></use></svg><span> Album Set</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-fan"></use></svg><span> Conditioning</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> About</span></a></div></div><span class="sidebar-menu-item-title">标签</span></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("04/01/2021 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://bu.dusays.com/2021/01/15/078d1936ddf32.png";
+        img.title = "嘿嘿~";
+        img.alt = "嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'http://43.142.114.172:8080/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.21/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'http://43.142.114.172:8080/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://blog-waline-b3qy7x4i1-ruoxijun.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, {"pageSize":10,"requiredMeta":["nick","mail"],"login":"enable","copyright":true,"locale":{"admin":"若惜君","sofa":"好像什么都没有诶~~~","placeholder":"悄悄的说句话~~~"}}))
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@2.15.5/dist/waline.css')
+      await getScript('https://cdn.cbd.int/@waline/client@2.15.5/dist/waline.js')
+      initWaline()
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'http://43.142.114.172:8080/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.21/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "visitor@anheyu.com";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-7JZFCVWT7S', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
