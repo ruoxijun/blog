@@ -49,9 +49,9 @@
       
         <tags>
             
-            <tag> springsecurity </tag>
-            
             <tag> springboot </tag>
+            
+            <tag> springsecurity </tag>
             
             <tag> jwt </tag>
             
