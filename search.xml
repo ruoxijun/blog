@@ -258,11 +258,11 @@
             
             <tag> es6 </tag>
             
-            <tag> vuex </tag>
+            <tag> npm </tag>
             
             <tag> webpack </tag>
             
-            <tag> npm </tag>
+            <tag> vuex </tag>
             
             <tag> vueRouter </tag>
             
@@ -318,6 +318,10 @@
             
             <tag> vue </tag>
             
+            <tag> webpack </tag>
+            
+            <tag> vuex </tag>
+            
             <tag> elementUI </tag>
             
             <tag> nodejs </tag>
@@ -325,10 +329,6 @@
             <tag> vue-cli </tag>
             
             <tag> vue-router </tag>
-            
-            <tag> vuex </tag>
-            
-            <tag> webpack </tag>
             
         </tags>
       
@@ -1188,9 +1188,9 @@
       
         <tags>
             
-            <tag> javaweb </tag>
-            
             <tag> jsp </tag>
+            
+            <tag> javaweb </tag>
             
             <tag> jstl </tag>
             
