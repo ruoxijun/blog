@@ -1,0 +1,708 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>mybatis 配置 | ruoxijun</title><meta name="keywords" content="mybatis,log4j,pagehelper"><meta name="author" content="ruoxijun,1460662245@qq.com"><meta name="copyright" content="ruoxijun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="mybatis 配置"><meta name="application-name" content="mybatis 配置"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="mybatis 配置"><meta property="og:url" content="http://ruoxijun.top/2020/08/07/java/ssm/mybatis/config/index.html"><meta property="og:site_name" content="ruoxijun"><meta property="og:description" content="配置文件，日志，分页核心配置文件解析与优化：详情请看：官方配置文档  注意官方规定mybatis-config.xml文件中configuration标签中的配置标签必须遵循如下顺序： properties → settings → typeAliases → typeHandlers → obje"><meta property="og:locale" content="en"><meta property="og:image" content="https://www.ruoxijun.top/getRandomImageR2?_r_=2d82673b-a48f-9117-30db-017be9cecc3b"><meta property="article:author" content="ruoxijun"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://www.ruoxijun.top/getRandomImageR2?_r_=2d82673b-a48f-9117-30db-017be9cecc3b"><meta name="description" content="配置文件，日志，分页核心配置文件解析与优化：详情请看：官方配置文档  注意官方规定mybatis-config.xml文件中configuration标签中的配置标签必须遵循如下顺序： properties → settings → typeAliases → typeHandlers → obje"><link rel="shortcut icon" href="/images/favicon.svg"><link rel="canonical" href="http://ruoxijun.top/2020/08/07/java/ssm/mybatis/config/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b3a933e91b357919bc48b2dcf700920b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-7JZFCVWT7S"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-7JZFCVWT7S');
+</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;dddccd3510d7456c85b636b70477a196&quot;}"></script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "imlr52l3x8");</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'http://43.142.114.172:8080/',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: ruoxijun","link":"Link: ","source":"Source: ruoxijun","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ruoxijun',
+  title: 'mybatis 配置',
+  postAI: '',
+  pageFillDescription: '配置文件日志分页, 核心配置文件解析与优化：, 1. 环境配置（environments）：, 2. 属性（properties）：, 3.类型别名（typeAliases）：, 4. 映射器（mappers）：, resultMap 结果集映射：, 1.因此对于查表可以利用SQL查询语句给 字段取别名 方式来解决字段名不同的问题：, 2. 在Mapper.xml中(mapper标签内)配置resultMap结果映射：, 日志：, settings 设置：, 控制台日志（STDOUT_LOGGING）：, LOG4J 日志：, 文件配置实现日志：, 代码中简单使用LOG4J日志：, 查询数据分页：, 1. SQL语句 limit 实现分页：, 2. 使用 RowBounds 对象方式(了解)：, 3. MyBatis 分页插件 PageHelper ：配置文件日志分页核心配置文件解析与优化详情请看官方配置文档注意官方规定文件中标签中的配置标签必须遵循如下顺序环境配置从我们熟悉的标签入手首先看一下官方提供的环境配置的模板环境与配置内配置环境可存在多个环境一个就是一个环境中的值应为某个环境的值它表示默认使用那一个环境此外官方还提到尽管可以配置多个环境但每个实例只能选择一种环境如果你连接多个数据库就需要创建多个实例提供了以下种方法创建实例以下两种使用默认的环境以下两种可利用参根据传入的来确认使用某个环境事务管理有两种类型事务管理器即的值有和两个直接使用了的提交和回滚设施它依赖从数据源获得的连接来管理事务作用域几乎不用自身不会去实现事务管理让程序的容器来实现事务的管理官方提到使用没有必要配置事务管理器可写成数据源使用标准的数据源接口来配置连接对象的资源属性的值有种其中默认利用池将连接对象组织起来避免创建新的连接实例花费时间一般常用此属性能使并发应用快速响应请求中属性常配置的有个驱动的类全限定名数据库的地址登录数据库的用户名登录数据库的密码需要在属性中赋予响应的值属性利用典型的属性文件后缀动态配置属性在文件夹下新建文件文件名可自定义文件中号前为后为在文件的标签中利用标签引入属性文件此时就可以利用属性文件动态的替换属性值了在需要引用的地方利用的方式动态替换如官方提供的环境配置模板中数据库连接配置处正是使用了此种方式除引入属性文件以外还能在其内部利用标签定义键值对当中和属性文件内都定义了相同的键值对时会发生什么我们看一段官方的文档内容首先读取在元素体内指定的属性然后根据元素中的属性读取类路径下属性文件或根据属性指定的路径读取属性文件并覆盖之前读取过的同名属性最后读取作为方法参数传递的属性并覆盖之前读取过的同名属性由此可知标签内的键值对先被读取再读取属性文件内的值所以属性文件内的值会覆盖标签的定义值类型别名如上在中设置的返回值类型时使用了完整路径类名的方式声明类型项目中不止一个地方会用到这个全名书写全名是比较繁琐的因此给它取别名是最好的选择中配置单个类型别名别名组标签别名配置类型名要完整的路径全名别名可以理解为变量名之后在需要使用此类型名的地方引用此别名即可如上例可替换为中配置包中所有类的类型别名标签内此配置此包内的所有类都会自动取别名且别名为忽视大小写的类名官方推荐引用时采用类名首字母小写的方式引用使用注解取别名为此类取别名为此三种方式可随意使用不冲突同时使用时取的所有别名都可生效都可引用映射器之前我们在的中利用属性注册的就是映射器这只是注册映射器的方法之一使用映射器接口实现类的完全限定类名注意此方式要求接口和的文件名必须同名且在同一个包下将包内的映射器接口实现全部注册为映射器注意此方式要求接口和的文件名必须同名且在同一个包下结果集映射之前我们写数据库表的对应字段类时要求类中成员变量名与字段名要相同这时我将第个成员变量改为运行查询表所有信息后为的值全为也就是没有赋值可知是根据字段名是否匹配来做操作的因此对于查表可以利用查询语句给字段取别名方式来解决字段名不同的问题但这不是最好的方法有更好的方案来解决此类问题在中标签内配置结果映射此结果映射集的表字段对应的字段类类这里使用的该类的类型别名对于字段名和成员变量同名的字段可以不用配置默认即可数据库字段名映射到此类指定的变量使用时不能在使用属性该为属性值为自定义属性结果集的没有自行配置之前自动创建了一个默认的字段名与映射名相同的这也是为什么之前我要求类的成员变量名与表的字段名对应的原因日志设置学习日志前先了解一下核心配置文件中的这是中极为重要的调整设置它们会改变的运行时行为每一项标签就是一项设置通过指定属性和的值来完成一项设置其中包括日志的设置中的调整设置日志实现控制台日志开启驼峰命名自动映射控制台日志上方对的设置指定使用了控制台日志运行以后大致会输出以下日志内容打开的连接创建一个连接对象在连接上将事务自动提交设置为执行的语句传入的参数此处参数为空查询的信息张三打印的数据张三在连接上将重置为关闭连接将连接返回数据库连接池日志文件配置实现日志同在中配置使用光设置还不能使用我们还需要导入依赖在中导入的包在中新建配置文件将等级为的日志信息输出到和这两个目的地和的定义在下面的代码控制台输出的相关设置文件输出的相关设置日志输出级别现在就已经实现对的日志打印了代码中简单使用日志获取日志对象建议设置为类对象需要当前类的对象作为参数三种不同级别的日志打印方式日志打印级别日志打印级别日志打印级别查询数据分页语句实现分页分页查询数据最简单最实用的方法就是在中书写语句时使用实现分页查询接口中定义分页查询方法中书写语句使用此处省略获取实例等步骤使用对象方式了解只是逻辑上的分页它是将已经查询到的数据进行分页构造函数参数与类似参表示数据开始位置角标参表示当前页的数据个数参为接口的全名加使用的方法名参传入即可分页插件分页插件官网内有文档使用教程添加依赖配置文件中配置插件分页合理化使用参当前第几页参每页的数据量数据条数紧跟在上方法后的第一个查询方法会被进行分页对结果进行包装参查询的数据集合参连续显示的页数当前页码总页码总记录数连续显示的页码当前页数据',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-28 13:53:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="其它"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="其它"/><span class="back-menu-item-text">其它</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">ruoxijun</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Article</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-box-archive"></use></svg><span> Tunnel</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shapes"></use></svg><span> Classification</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tags"></use></svg><span> Label</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Friend</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> Friends account</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-artstation"></use></svg><span> Moments</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-envelope"></use></svg><span> Message board</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> My</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-music"></use></svg><span> Music Hall</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> Chasing</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-images"></use></svg><span> Album Set</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-fan"></use></svg><span> Conditioning</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> About</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> Search</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://ruoxijun.pythonanywhere.com/download" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://ruoxijun.pythonanywhere.com/download"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://ruoxijun.pythonanywhere.com/download" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://ruoxijun.pythonanywhere.com/download"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/WebView/" style="font-size: 1.05rem;">WebView<sup>1</sup></a><a href="/tags/alertdialog/" style="font-size: 1.05rem;">alertdialog<sup>1</sup></a><a href="/tags/arduino/" style="font-size: 1.05rem;">arduino<sup>1</sup></a><a href="/tags/axios/" style="font-size: 1.05rem;">axios<sup>3</sup></a><a href="/tags/docker/" style="font-size: 1.05rem;">docker<sup>1</sup></a><a href="/tags/es6/" style="font-size: 1.05rem;">es6<sup>2</sup></a><a href="/tags/file/" style="font-size: 1.05rem;">file<sup>2</sup></a><a href="/tags/fragment/" style="font-size: 1.05rem;">fragment<sup>1</sup></a><a href="/tags/idea/" style="font-size: 1.05rem;">idea<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>3</sup></a><a href="/tags/jdbc/" style="font-size: 1.05rem;">jdbc<sup>1</sup></a><a href="/tags/jquery/" style="font-size: 1.05rem;">jquery<sup>1</sup></a><a href="/tags/k8s/" style="font-size: 1.05rem;">k8s<sup>1</sup></a><a href="/tags/kubernetes/" style="font-size: 1.05rem;">kubernetes<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>4</sup></a><a href="/tags/lombok/" style="font-size: 1.05rem;">lombok<sup>2</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/maven/" style="font-size: 1.05rem;">maven<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>1</sup></a><a href="/tags/nginx/" style="font-size: 1.05rem;">nginx<sup>1</sup></a><a href="/tags/nps/" style="font-size: 1.05rem;">nps<sup>1</sup></a><a href="/tags/pecyclerView/" style="font-size: 1.05rem;">pecyclerView<sup>1</sup></a><a href="/tags/popupwindow/" style="font-size: 1.05rem;">popupwindow<sup>1</sup></a><a href="/tags/progressBar/" style="font-size: 1.05rem;">progressBar<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>1</sup></a><a href="/tags/scrollView/" style="font-size: 1.05rem;">scrollView<sup>1</sup></a><a href="/tags/sharedpreferences/" style="font-size: 1.05rem;">sharedpreferences<sup>1</sup></a><a href="/tags/sql/" style="font-size: 1.05rem;">sql<sup>1</sup></a><a href="/tags/sqlite/" style="font-size: 1.05rem;">sqlite<sup>1</sup></a><a href="/tags/tabLayout/" style="font-size: 1.05rem;">tabLayout<sup>1</sup></a><a href="/tags/termux/" style="font-size: 1.05rem;">termux<sup>1</sup></a><a href="/tags/toast/" style="font-size: 1.05rem;">toast<sup>1</sup></a><a href="/tags/typescript/" style="font-size: 1.05rem;">typescript<sup>1</sup></a><a href="/tags/viewpager/" style="font-size: 1.05rem;">viewpager<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 1.05rem;">vue3<sup>2</sup></a><a href="/tags/wsl/" style="font-size: 1.05rem;">wsl<sup>1</sup></a><a href="/tags/zerotermux/" style="font-size: 1.05rem;">zerotermux<sup>1</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 1.05rem;">内网穿透<sup>1</sup></a><a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 1.05rem;">物联网<sup>1</sup></a><a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 1.05rem;">面向对象<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">March 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">July 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">February 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">September 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">August 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">January 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">October 2020</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/SpringBoot/" itemprop="url">SpringBoot</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/mybatis/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>mybatis</span></a><a class="article-meta__tags" href="/tags/log4j/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>log4j</span></a><a class="article-meta__tags" href="/tags/pagehelper/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>pagehelper</span></a></span></div></div><h1 class="post-title" itemprop="name headline">mybatis 配置</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2020-08-07T08:44:33.000Z" title="Created 2020-08-07 16:44:33">2020-08-07</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2023-08-28T05:53:41.223Z" title="Updated 2023-08-28 13:53:41">2023-08-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">Word count:</span><span class="word-count" title="文章字数">3.4k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">Reading time:</span><span>13min</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="mybatis 配置"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">Post View:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为重庆"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>重庆</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2020/08/07/java/ssm/mybatis/config/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://www.ruoxijun.top/getRandomImageR2?_r_=2d82673b-a48f-9117-30db-017be9cecc3b"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://ruoxijun.top/2020/08/07/java/ssm/mybatis/config/"><header><a class="post-meta-categories" href="/categories/SpringBoot/" itemprop="url">SpringBoot</a><a href="/tags/mybatis/" tabindex="-1" itemprop="url">mybatis</a><a href="/tags/log4j/" tabindex="-1" itemprop="url">log4j</a><a href="/tags/pagehelper/" tabindex="-1" itemprop="url">pagehelper</a><h1 id="CrawlerTitle" itemprop="name headline">mybatis 配置</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ruoxijun</span><time itemprop="dateCreated datePublished" datetime="2020-08-07T08:44:33.000Z" title="Created 2020-08-07 16:44:33">2020-08-07</time><time itemprop="dateCreated datePublished" datetime="2023-08-28T05:53:41.223Z" title="Updated 2023-08-28 13:53:41">2023-08-28</time></header><h2 id="配置文件，日志，分页"><a href="#配置文件，日志，分页" class="headerlink" title="配置文件，日志，分页"></a>配置文件，日志，分页</h2><h3 id="核心配置文件解析与优化："><a href="#核心配置文件解析与优化：" class="headerlink" title="核心配置文件解析与优化："></a>核心配置文件解析与优化：</h3><p>详情请看：<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/configuration.html#typeAliases">官方配置文档</a></p>
+<blockquote>
+<p>注意官方规定<code>mybatis-config.xml</code>文件中<code>configuration</code>标签中的配置标签必须遵循如下顺序：</p>
+<p><code>properties</code> → <code>settings</code> → <code>typeAliases</code> → <code>typeHandlers</code> → <code>objectFactory</code> → <code>objectWrapperFactory</code> → <code>reflectorFactory</code> → <code>plugins</code> → <code>environments</code> → <code>databaseIdProvider</code> → <code>mappers</code></p>
+</blockquote>
+<h4 id="1-环境配置（environments）："><a href="#1-环境配置（environments）：" class="headerlink" title="1. 环境配置（environments）："></a>1. 环境配置（environments）：</h4><p>从我们熟悉的 <code>environments</code> 标签入手，首先看一下官方提供的环境配置的模板：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;...&quot;</span> <span class="attr">value</span>=<span class="string">&quot;...&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>环境与配置：<code>environments</code> 内配置环境可存在多个环境，一个<code>environment</code> 就是一个环境。<code>environments</code> 中的 <strong>default</strong> 值应为某个<code>environment</code> 环境的 <strong>id</strong> 值，它表示默认使用那一个环境。</p>
+<ul>
+<li><p>此外官方还提到：<strong>尽管可以配置多个环境，但每个 SqlSessionFactory 实例只能选择一种环境。</strong></p>
+</li>
+<li><p>如果你连接多个数据库，就需要创建多个 SqlSessionFactory 实例。mybatis提供了以下4种方法创建SqlSessionFactory 实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下两种使用`environments`默认的环境</span></span><br><span class="line"><span class="type">SqlSessionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader);</span><br><span class="line"><span class="type">SqlSessionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader, properties);</span><br><span class="line"><span class="comment">// 以下两种可利用参2根据传入`environment`的id来确认使用某个环境</span></span><br><span class="line"><span class="type">SqlSessionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader, environment);</span><br><span class="line"><span class="type">SqlSessionFactory</span> <span class="variable">factory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader, environment, properties);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>事务管理：<code>transactionManager</code> 有两种类型事务管理器即 <strong>type</strong> 的值有 <strong>JDBC</strong> 和 <strong>MANAGED</strong> 两个：</p>
+<ul>
+<li>JDBC：直接使用了 <strong>JDBC 的提交和回滚设施</strong>，它依赖从数据源获得的连接来管理事务作用域。</li>
+<li>MANAGED：几乎不用。mybatis自身不会去实现事务管理，让程序的容器来实现事务的管理。</li>
+<li>官方提到使用 Spring + MyBatis，没有必要配置事务管理器可写成：<code>&lt;transactionManager type=&quot;JDBC&quot;/&gt;</code></li>
+</ul>
+</li>
+<li><p>数据源：<code>dataSource</code> 使用标准的 JDBC 数据源接口来配置 JDBC 连接对象的资源：</p>
+<ul>
+<li><code>dataSource</code> 属性 <strong>type</strong> 的值有3种其中默认 <strong>POOLED</strong> ：利用“池”将 JDBC 连接对象组织起来，避免创建新的连接实例花费时间。 一般常用此属性，能使并发 Web 应用快速响应请求。</li>
+<li><code>property</code>：中<strong>name</strong>属性常配置的有4个：1. <code>driver</code> JDBC 驱动的 Java 类全限定名，2. <code>url</code> 数据库的 JDBC URL 地址，3.<code>username</code> 登录数据库的用户名，4. <code>password</code> 登录数据库的密码。需要在 <strong>value</strong> 属性中赋予响应的值。</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-属性（properties）："><a href="#2-属性（properties）：" class="headerlink" title="2. 属性（properties）："></a>2. 属性（properties）：</h4><p>利用典型的 Java 属性文件(properties后缀)动态配置属性。在 <code>resources</code> 文件夹下新建文件 <strong>db.properties</strong> (文件名可自定义)，文件中 <strong>&#x3D;</strong> 号前为 <strong>key</strong> 后为 <strong>value</strong>：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">driver</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/test?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">991314</span></span><br></pre></td></tr></table></figure>
+
+<p>在 <strong>mybatis-config.xml</strong> 文件的<code>configuration</code>标签中利用<code>properties</code>标签引入属性文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;db.properties&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此时就可以利用属性文件动态的替换属性值了，在需要引用的地方利用 <code>$&#123;key&#125;</code> 的方式动态替换。如官方提供的环境配置模板中数据库连接配置处正是使用了此种方式：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>properties</code> 除引入属性文件以外，还能在其内部利用<code>property</code>标签定义键值对。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;db.properties&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当<code>properties</code>中和属性文件内都定义了key相同的键值对时会发生什么，我们看一段官方的文档内容：</p>
+<ul>
+<li>首先读取在 properties 元素体内指定的属性。</li>
+<li>然后根据 properties 元素中的 resource 属性读取类路径下属性文件，或根据 url 属性指定的路径读取属性文件，并覆盖之前读取过的同名属性。</li>
+<li>最后读取作为方法参数传递的属性，并覆盖之前读取过的同名属性。</li>
+</ul>
+<p>由此可知标签内的键值对先被读取，再读取属性文件内的值。所以属性文件内的值会覆盖标签的定义值。</p>
+<h4 id="3-类型别名（typeAliases）："><a href="#3-类型别名（typeAliases）：" class="headerlink" title="3.类型别名（typeAliases）："></a>3.类型别名（typeAliases）：</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUsersList&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;io.github.ruoxijun.pojo.UserPojo&quot;</span>&gt;</span></span><br><span class="line">    select * from user</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如上在Mapper.xml中设置select的返回值类型时使用了<code>resultType=&quot;io.github.ruoxijun.pojo.UserPojo&quot;</code>完整路径类名的方式声明类型，项目中不止一个地方会用到这个全名。书写全名是比较繁琐的因此给它<strong>取别名</strong>是最好的选择。</p>
+<ol>
+<li><strong>Mybatis-config.xml</strong>中<code>typeAlias</code>配置单个类型别名：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- typeAliases别名组标签 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- typeAlias别名配置:</span></span><br><span class="line"><span class="comment">        type：类型名要完整的路径全名</span></span><br><span class="line"><span class="comment">        alias：别名（可以理解为变量名） --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">type</span>=<span class="string">&quot;io.github.ruoxijun.pojo.UserPojo&quot;</span> <span class="attr">alias</span>=<span class="string">&quot;userPojo&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>之后在需要使用此类型名的地方引用此别名即可，如上例可替换为：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUsersList&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;userPojo&quot;</span>&gt;</span></span><br><span class="line">    select * from user</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>Mybatis-config.xml</strong>中<code>package</code>配置包中所有类的类型别名：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;io.github.ruoxijun.pojo&quot;</span> /&gt;</span><span class="comment">&lt;!-- typeAliases标签内 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此配置此包内的所有类都会自动取别名，且<strong>别名为忽视大小写的类名</strong>。官方推荐引用时采用<strong>类名首字母小写</strong>的方式引用。</p>
+<ol start="3">
+<li>使用注解取别名：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Alias(&quot;user&quot;)</span> <span class="comment">// 为此类取别名为 user</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserPojo</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此三种方式可随意使用不冲突，同时使用时取的所有别名都可生效都可引用。</p>
+<h4 id="4-映射器（mappers）："><a href="#4-映射器（mappers）：" class="headerlink" title="4. 映射器（mappers）："></a>4. 映射器（mappers）：</h4><p>之前我们在<code>mybatis-config.xml</code>的mapper中利用<strong>resource</strong>属性注册的Mapper.xml就是映射器。这只是注册映射器的方法之一：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;io/github/ruoxijun/mapper/UserMapper.xml&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用映射器接口实现类的完全限定类名</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;io.github.ruoxijun.mapper.UserMapper&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：此方式要求Mapper接口和Mapper.xml的<strong>文件名必须同名且在同一个包下</strong>。</p>
+<ul>
+<li>将包内的映射器接口实现全部注册为映射器</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;io.github.ruoxijun.mapper&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：此方式要求Mapper接口和Mapper.xml的<strong>文件名必须同名且在同一个包下</strong>。</p>
+<h3 id="resultMap-结果集映射："><a href="#resultMap-结果集映射：" class="headerlink" title="resultMap 结果集映射："></a>resultMap 结果集映射：</h3><p>之前我们写数据库表的对应字段类时要求，类中成员变量名与字段名要相同。这时我<strong>将第3个成员变量<code>age</code>改为<code>a</code><strong>。运行查询表所有信息后</strong>a为的值全为0</strong>也就是没有赋值，可知Mybatis是根据字段名是否匹配来做操作的。</p>
+<h5 id="1-因此对于查表可以利用SQL查询语句给-字段取别名-方式来解决字段名不同的问题："><a href="#1-因此对于查表可以利用SQL查询语句给-字段取别名-方式来解决字段名不同的问题：" class="headerlink" title="1.因此对于查表可以利用SQL查询语句给 字段取别名 方式来解决字段名不同的问题："></a>1.因此对于查表可以利用SQL查询语句给 <em>字段取别名</em> 方式来解决字段名不同的问题：</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserList&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;userPojo&quot;</span> &gt;</span></span><br><span class="line">    select id,name,age as a from user</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但这不是最好的方法，Mybatis有更好的方案来解决此类问题。</p>
+<h5 id="2-在Mapper-xml中-mapper标签内-配置resultMap结果映射："><a href="#2-在Mapper-xml中-mapper标签内-配置resultMap结果映射：" class="headerlink" title="2. 在Mapper.xml中(mapper标签内)配置resultMap结果映射："></a>2. 在Mapper.xml中(mapper标签内)配置resultMap结果映射：</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- id：此结果映射集的id</span></span><br><span class="line"><span class="comment">    type：表字段对应的字段类(pojo类)，这里使用的该类的类型别名 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;userMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;userPojo&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 对于字段名和成员变量同名的字段可以不用配置默认即可 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;name&quot;</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- column：数据库字段名</span></span><br><span class="line"><span class="comment">        property：映射到此类指定的变量 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;age&quot;</span> <span class="attr">property</span>=<span class="string">&quot;a&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用时不能在使用<strong>resultType</strong>属性，该为<strong>resultMap</strong>属性值为自定义属性结果集的<strong>id</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserList&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;userMap&quot;</span> &gt;</span></span><br><span class="line">    select * from user</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>没有自行配置<strong>resultMap</strong>之前Mybatis自动创建了一个默认的字段名与映射名相同的<strong>resultMap</strong>。这也是为什么之前我要求类的成员变量名与表的字段名对应的原因。、</p>
+<h3 id="日志："><a href="#日志：" class="headerlink" title="日志："></a>日志：</h3><h4 id="settings-设置："><a href="#settings-设置：" class="headerlink" title="settings 设置："></a>settings 设置：</h4><p>学习日志前先了解一下 Mybatis 核心配置文件中的 <strong>settings</strong> 这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为。</p>
+<p><strong>settings</strong> 每一项  <strong>setting</strong> 标签就是一项设置，通过指定属性<code>name</code>和<code>value</code>的值来完成一项设置。其中包括日志的设置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- MyBatis 中的调整设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- logImpl：日志实现 </span></span><br><span class="line"><span class="comment">        STDOUT_LOGGING：控制台日志 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;STDOUT_LOGGING&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 开启驼峰命名自动映射 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;mapUnderscoreToCamelCase&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="控制台日志（STDOUT-LOGGING）："><a href="#控制台日志（STDOUT-LOGGING）：" class="headerlink" title="控制台日志（STDOUT_LOGGING）："></a>控制台日志（STDOUT_LOGGING）：</h4><p>上方对<strong>setting</strong>的设置指定使用了控制台日志，运行以后大致会输出以下日志内容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开 JDBC 的连接</span></span><br><span class="line">Opening JDBC Connection</span><br><span class="line"><span class="comment">// 创建一个 connection (连接对象)</span></span><br><span class="line">Created connection <span class="number">247944893.</span></span><br><span class="line"><span class="comment">// 在 JDBC 连接上将 autocommit (事务自动提交)设置为 false</span></span><br><span class="line">Setting autocommit to <span class="literal">false</span> on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl<span class="meta">@ec756bd</span>]</span><br><span class="line"><span class="comment">// 执行的 SQL 语句</span></span><br><span class="line">==&gt;  Preparing: select * from user</span><br><span class="line"><span class="comment">// 传入的参数(此处参数为空)</span></span><br><span class="line">==&gt; Parameters: </span><br><span class="line"><span class="comment">// 查询的信息</span></span><br><span class="line">&lt;==    Columns: id, name, age</span><br><span class="line">&lt;==        Row: <span class="number">1</span>, 张三, <span class="number">10</span></span><br><span class="line">&lt;==      Total: <span class="number">1</span></span><br><span class="line"><span class="comment">// 打印的数据(System.out.println)</span></span><br><span class="line">UserPojo&#123;id=<span class="number">1</span>, name=<span class="string">&#x27;张三&#x27;</span>, a=<span class="number">10</span>&#125;</span><br><span class="line"><span class="comment">// 在 JDBC 连接上将 autocommit 重置为 true</span></span><br><span class="line">Resetting autocommit to <span class="literal">true</span> on JDBC Connection[com.mysql.cj.jdbc.ConnectionImpl<span class="meta">@ec756bd</span>]</span><br><span class="line"><span class="comment">// 关闭 JDBC 连接</span></span><br><span class="line">Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl<span class="meta">@ec756bd</span>]</span><br><span class="line"><span class="comment">// 将连接返回数据库连接池</span></span><br><span class="line">Returned connection <span class="number">247944893</span> to pool.</span><br></pre></td></tr></table></figure>
+
+<h4 id="LOG4J-日志："><a href="#LOG4J-日志：" class="headerlink" title="LOG4J 日志："></a>LOG4J 日志：</h4><h5 id="文件配置实现日志："><a href="#文件配置实现日志：" class="headerlink" title="文件配置实现日志："></a>文件配置实现日志：</h5><ol>
+<li><p>同在 <strong>settings</strong> 中配置使用 <strong>LOG4J</strong>：<code>&lt;setting name=&quot;logImpl&quot; value=&quot;LOG4J&quot;/&gt;</code></p>
+</li>
+<li><p>光设置还不能使用我们还需要导入<strong>LOG4J</strong>依赖，在<strong>pom.xml</strong>中导入log4j的包：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/log4j/log4j --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<strong>properties</strong>中新建配置文件<strong>log4j.properties</strong>：</p>
+ <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将等级为DEBUG的日志信息输出到console和file这两个目的地，console和file的定义在下面的代码</span></span><br><span class="line"><span class="attr">log4j.rootLogger</span>=<span class="string">DEBUG,console,file</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#控制台输出的相关设置</span></span><br><span class="line"><span class="attr">log4j.appender.console</span> = <span class="string">org.apache.log4j.ConsoleAppender</span></span><br><span class="line"><span class="attr">log4j.appender.console.Target</span> = <span class="string">System.out</span></span><br><span class="line"><span class="attr">log4j.appender.console.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="attr">log4j.appender.console.layout</span> = <span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.console.layout.ConversionPattern</span>=<span class="string">[%c]-%m%n</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#文件输出的相关设置</span></span><br><span class="line"><span class="attr">log4j.appender.file</span> = <span class="string">org.apache.log4j.RollingFileAppender</span></span><br><span class="line"><span class="attr">log4j.appender.file.File</span>=<span class="string">./log/runTime.log</span></span><br><span class="line"><span class="attr">log4j.appender.file.MaxFileSize</span>=<span class="string">10mb</span></span><br><span class="line"><span class="attr">log4j.appender.file.Threshold</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="attr">log4j.appender.file.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="attr">log4j.appender.file.layout.ConversionPattern</span>=<span class="string">[%p][%d&#123;yy-MM-dd&#125;][%c]%m%n</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#日志输出级别</span></span><br><span class="line"><span class="attr">log4j.logger.org.mybatis</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="attr">log4j.logger.java.sql</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="attr">log4j.logger.java.sql.Statement</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="attr">log4j.logger.java.sql.ResultSet</span>=<span class="string">DEBUG</span></span><br><span class="line"><span class="attr">log4j.logger.java.sql.PreparedStatement</span>=<span class="string">DEBUG</span></span><br></pre></td></tr></table></figure>
+
+<p> 现在就已经实现对Mybatis的日志打印了。</p>
+</li>
+</ol>
+<h5 id="代码中简单使用LOG4J日志："><a href="#代码中简单使用LOG4J日志：" class="headerlink" title="代码中简单使用LOG4J日志："></a>代码中简单使用<strong>LOG4J</strong>日志：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取日志对象(建议设置为类对象)需要当前类的class对象作为参数</span></span><br><span class="line"><span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> Logger.getLogger(Demo.class);</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testLog</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">// 三种不同级别的日志打印方式</span></span><br><span class="line">    logger.info(<span class="string">&quot;Log4j日志打印级别：info&quot;</span>);</span><br><span class="line">    logger.debug(<span class="string">&quot;Log4j日志打印级别：debug&quot;</span>);</span><br><span class="line">    logger.error(<span class="string">&quot;Log4j日志打印级别：error&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询数据分页："><a href="#查询数据分页：" class="headerlink" title="查询数据分页："></a>查询数据分页：</h3><h4 id="1-SQL语句-limit-实现分页："><a href="#1-SQL语句-limit-实现分页：" class="headerlink" title="1. SQL语句 limit 实现分页："></a>1. SQL语句 <strong>limit</strong> 实现分页：</h4><p>分页查询数据最简单最实用的方法就是在Mapper.xml中书写SQL语句时使用 <strong>limit</strong> 实现分页查询。</p>
+<p>Mapper接口中定义分页查询方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;UserPojo&gt; <span class="title function_">getUserLimit</span><span class="params">(Map&lt;String,Object&gt; map)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Mapper.xml中书写SQL语句：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserLimit&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;userMap&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;map&quot;</span>&gt;</span></span><br><span class="line">    select * from user limit #&#123;startIndex&#125;,#&#123;pageSize&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用（此处省略获取mapper实例等步骤）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Object&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">map.put(<span class="string">&quot;startIndex&quot;</span>,<span class="number">0</span>);</span><br><span class="line">map.put(<span class="string">&quot;pageSize&quot;</span>,<span class="number">3</span>);</span><br><span class="line">List&lt;UserPojo&gt; userLimit = mapper.getUserLimit(map);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用-RowBounds-对象方式-了解-："><a href="#2-使用-RowBounds-对象方式-了解-：" class="headerlink" title="2. 使用 RowBounds 对象方式(了解)："></a>2. 使用 RowBounds 对象方式(了解)：</h4><p>RowBounds只是逻辑上的分页，它是将SQL已经查询到的数据进行分页。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数参数与limit类似：参1表示数据开始位置角标，参2表示当前页的数据个数</span></span><br><span class="line"><span class="type">RowBounds</span> <span class="variable">rowBounds</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RowBounds</span>(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="type">SqlSession</span> <span class="variable">sqlSession</span> <span class="operator">=</span> GetSqlSession.getSqlSession();</span><br><span class="line"><span class="comment">// 参1为 Mapper 接口的全名加使用的方法名，参3传入 RowBounds 即可</span></span><br><span class="line">List&lt;UserPojo&gt; userPojoList = sqlSession</span><br><span class="line">    .selectList(<span class="string">&quot;io.github.ruoxijun.mapper.UserMapper.getUserList&quot;</span>,</span><br><span class="line">                <span class="literal">null</span>, rowBounds);</span><br><span class="line"><span class="keyword">for</span> (UserPojo user : userPojoList) &#123;</span><br><span class="line">    System.out.println(user);</span><br><span class="line">&#125;</span><br><span class="line">sqlSession.close();</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-MyBatis-分页插件-PageHelper-："><a href="#3-MyBatis-分页插件-PageHelper-：" class="headerlink" title="3. MyBatis 分页插件 PageHelper ："></a>3. MyBatis 分页插件 PageHelper ：</h4><p><a target="_blank" rel="noopener" href="https://pagehelper.github.io/">MyBatis 分页插件官网（内有文档使用教程）</a></p>
+<ul>
+<li>添加依赖：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>mybatis配置文件中配置插件：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageInterceptor&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;reasonable&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span><span class="comment">&lt;!-- 分页合理化 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参1：当前第几页，参2：每页的数据量（数据条数）</span></span><br><span class="line">PageHelper.startPage(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">// 紧跟在上方法后的第一个MyBatis 查询方法会被进行分页</span></span><br><span class="line">List&lt;User&gt; users= UserService.getAll();</span><br><span class="line"><span class="comment">// PageInfo对结果进行包装,参1：查询的数据集合，参2：连续显示的页数</span></span><br><span class="line"><span class="type">PageInfo</span> <span class="variable">pageInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PageInfo</span>(users,<span class="number">5</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;当前页码：&quot;</span>+pageInfo.getPageNum());</span><br><span class="line">System.out.println(<span class="string">&quot;总页码：&quot;</span>+pageInfo.getPages());</span><br><span class="line">System.out.println(<span class="string">&quot;总记录数&quot;</span>+pageInfo.getTotal());</span><br><span class="line">System.out.println(<span class="string">&quot;连续显示的页码：&quot;</span>);</span><br><span class="line"><span class="type">int</span>[] nums = pageInfo.getNavigatepageNums();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">    System.out.print(<span class="string">&quot; &quot;</span>+num);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">&quot;当前页数据：&quot;</span>);</span><br><span class="line">List&lt;User&gt; list = pageInfo.getList();</span><br><span class="line"><span class="keyword">for</span> (User user:users)&#123;</span><br><span class="line">    System.out.println(employee);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">ruoxijun</div><div class="post-copyright__author_desc">若惜君</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://ruoxijun.top/2020/08/07/java/ssm/mybatis/config/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://ruoxijun.top/2020/08/07/java/ssm/mybatis/config/')">mybatis 配置</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://ruoxijun.top/2020/08/07/java/ssm/mybatis/config/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=mybatis 配置&amp;url=http://ruoxijun.top/2020/08/07/java/ssm/mybatis/config/&amp;pic=https://www.ruoxijun.top/getRandomImageR2?_r_=2d82673b-a48f-9117-30db-017be9cecc3b" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/mybatis/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>mybatis<span class="tagsPageCount">5</span></a><a class="post-meta__box__tags" href="/tags/log4j/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>log4j<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/pagehelper/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>pagehelper<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://www.ruoxijun.top/getRandomImageR2?_r_=50c7af16-843d-8bf7-e69b-ada8cf51eee2" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/07/17/java/ssm/mybatis/index/"><img class="prev-cover" src="https://www.ruoxijun.top/getRandomImageR2?_r_=b866db32-91b8-ab99-630b-ae41143160bd" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">mybatis 基础入门</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/11/java/ssm/mybatis/advanced/"><img class="next-cover" src="https://www.ruoxijun.top/getRandomImageR2?_r_=ccfb1dec-4ef3-8758-1032-6ac3d5731411" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">mybatis 动态SQL</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/10/06/java/ssm/ssm/" title="ssm 整合"><img class="cover" src="https://www.ruoxijun.top/getRandomImageR2?_r_=b5a48027-6e5f-3c19-d222-ababbefd313f" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2023-08-28</div><div class="title">ssm 整合</div></div></a></div><div><a href="/2020/08/11/java/ssm/mybatis/advanced/" title="mybatis 动态SQL"><img class="cover" src="https://www.ruoxijun.top/getRandomImageR2?_r_=ccfb1dec-4ef3-8758-1032-6ac3d5731411" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2023-08-28</div><div class="title">mybatis 动态SQL</div></div></a></div><div><a href="/2020/07/17/java/ssm/mybatis/index/" title="mybatis 基础入门"><img class="cover" src="https://www.ruoxijun.top/getRandomImageR2?_r_=b866db32-91b8-ab99-630b-ae41143160bd" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2023-08-28</div><div class="title">mybatis 基础入门</div></div></a></div><div><a href="/2020/08/18/java/ssm/spring/sm/" title="Spring数据库操作"><img class="cover" src="https://www.ruoxijun.top/getRandomImageR2?_r_=d8c27ee4-00ab-d3d6-d9e1-16c6ca10a1fe" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-history fa-fw"></i> 2023-08-28</div><div class="title">Spring数据库操作</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"><span>最是人间留不住，<br/>朱颜辞镜花辞树。<span></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ruoxijun</h1><div class="author-info__desc">若惜君</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://ruoxijun.top/" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%8C%E6%97%A5%E5%BF%97%EF%BC%8C%E5%88%86%E9%A1%B5"><span class="toc-number">1.</span> <span class="toc-text">配置文件，日志，分页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E4%B8%8E%E4%BC%98%E5%8C%96%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">核心配置文件解析与优化：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%EF%BC%88environments%EF%BC%89%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 环境配置（environments）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B1%9E%E6%80%A7%EF%BC%88properties%EF%BC%89%EF%BC%9A"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 属性（properties）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D%EF%BC%88typeAliases%EF%BC%89%EF%BC%9A"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.类型别名（typeAliases）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%98%A0%E5%B0%84%E5%99%A8%EF%BC%88mappers%EF%BC%89%EF%BC%9A"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 映射器（mappers）：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resultMap-%E7%BB%93%E6%9E%9C%E9%9B%86%E6%98%A0%E5%B0%84%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">resultMap 结果集映射：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%9B%A0%E6%AD%A4%E5%AF%B9%E4%BA%8E%E6%9F%A5%E8%A1%A8%E5%8F%AF%E4%BB%A5%E5%88%A9%E7%94%A8SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%BB%99-%E5%AD%97%E6%AE%B5%E5%8F%96%E5%88%AB%E5%90%8D-%E6%96%B9%E5%BC%8F%E6%9D%A5%E8%A7%A3%E5%86%B3%E5%AD%97%E6%AE%B5%E5%90%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">1.因此对于查表可以利用SQL查询语句给 字段取别名 方式来解决字段名不同的问题：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%9C%A8Mapper-xml%E4%B8%AD-mapper%E6%A0%87%E7%AD%BE%E5%86%85-%E9%85%8D%E7%BD%AEresultMap%E7%BB%93%E6%9E%9C%E6%98%A0%E5%B0%84%EF%BC%9A"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">2. 在Mapper.xml中(mapper标签内)配置resultMap结果映射：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">日志：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#settings-%E8%AE%BE%E7%BD%AE%EF%BC%9A"><span class="toc-number">1.3.1.</span> <span class="toc-text">settings 设置：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%97%A5%E5%BF%97%EF%BC%88STDOUT-LOGGING%EF%BC%89%EF%BC%9A"><span class="toc-number">1.3.2.</span> <span class="toc-text">控制台日志（STDOUT_LOGGING）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LOG4J-%E6%97%A5%E5%BF%97%EF%BC%9A"><span class="toc-number">1.3.3.</span> <span class="toc-text">LOG4J 日志：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%AE%9E%E7%8E%B0%E6%97%A5%E5%BF%97%EF%BC%9A"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">文件配置实现日志：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8LOG4J%E6%97%A5%E5%BF%97%EF%BC%9A"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">代码中简单使用LOG4J日志：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E5%88%86%E9%A1%B5%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">查询数据分页：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-SQL%E8%AF%AD%E5%8F%A5-limit-%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%EF%BC%9A"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. SQL语句 limit 实现分页：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-RowBounds-%E5%AF%B9%E8%B1%A1%E6%96%B9%E5%BC%8F-%E4%BA%86%E8%A7%A3-%EF%BC%9A"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 使用 RowBounds 对象方式(了解)：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-MyBatis-%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6-PageHelper-%EF%BC%9A"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. MyBatis 分页插件 PageHelper ：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/29/java/springboot/mybatisplus/" title="MyBatis-Plus"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=50c7af16-843d-8bf7-e69b-ada8cf51eee2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatis-Plus"/></a><div class="content"><a class="title" href="/2023/04/29/java/springboot/mybatisplus/" title="MyBatis-Plus">MyBatis-Plus</a><time datetime="2023-04-29T02:10:14.000Z" title="Created 2023-04-29 10:10:14">2023-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/29/java/springboot/SpringSecurity/" title="SpringSecurity"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=e0e7efff-1060-0902-9936-f1cf014154fd" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringSecurity"/></a><div class="content"><a class="title" href="/2023/04/29/java/springboot/SpringSecurity/" title="SpringSecurity">SpringSecurity</a><time datetime="2023-04-29T02:10:14.000Z" title="Created 2023-04-29 10:10:14">2023-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/20/interest/Arduino/" title="Arduino"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=36dfeef1-538b-2417-b455-b36a26833d3c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arduino"/></a><div class="content"><a class="title" href="/2023/04/20/interest/Arduino/" title="Arduino">Arduino</a><time datetime="2023-04-20T12:43:00.000Z" title="Created 2023-04-20 20:43:00">2023-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/15/interest/Termux/" title="ZeroTermux"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=7d43e6f9-1a77-140b-ac51-1ca1928dbf8b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ZeroTermux"/></a><div class="content"><a class="title" href="/2023/04/15/interest/Termux/" title="ZeroTermux">ZeroTermux</a><time datetime="2023-04-15T12:45:00.000Z" title="Created 2023-04-15 20:45:00">2023-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/02/interest/%E4%BA%91%E5%8E%9F%E7%94%9F/" title="云原生"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=a313731c-fdfe-8105-173d-511ec8f537cd" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="云原生"/></a><div class="content"><a class="title" href="/2023/04/02/interest/%E4%BA%91%E5%8E%9F%E7%94%9F/" title="云原生">云原生</a><time datetime="2023-04-02T02:04:00.000Z" title="Created 2023-04-02 10:04:00">2023-04-02</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://bu.dusays.com/2021/01/15/078d1936ddf32.png" alt="大佬带我~" title="大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="ruoxijun" target="_blank">ruoxijun</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = []
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" href="https://ruoxijun.top/" title="湘ICP备-不备案号">湘ICP备-不备案号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">48</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">117</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">10</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="其它"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="其它"/><span class="back-menu-item-text">其它</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Article</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-box-archive"></use></svg><span> Tunnel</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shapes"></use></svg><span> Classification</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tags"></use></svg><span> Label</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Friend</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> Friends account</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-artstation"></use></svg><span> Moments</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-envelope"></use></svg><span> Message board</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> My</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-music"></use></svg><span> Music Hall</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> Chasing</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-images"></use></svg><span> Album Set</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-fan"></use></svg><span> Conditioning</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> About</span></a></div></div><span class="sidebar-menu-item-title">标签</span></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("04/01/2021 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://bu.dusays.com/2021/01/15/078d1936ddf32.png";
+        img.title = "嘿嘿~";
+        img.alt = "嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'http://43.142.114.172:8080/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'http://43.142.114.172:8080/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://blog-waline-b3qy7x4i1-ruoxijun.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, {"pageSize":10,"requiredMeta":["nick","mail"],"login":"enable","copyright":true,"locale":{"admin":"若惜君","sofa":"好像什么都没有诶~~~","placeholder":"悄悄的说句话~~~"}}))
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@2.15.5/dist/waline.css')
+      await getScript('https://cdn.cbd.int/@waline/client@2.15.5/dist/waline.js')
+      initWaline()
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'http://43.142.114.172:8080/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "visitor@anheyu.com";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-7JZFCVWT7S', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

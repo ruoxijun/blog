@@ -1,0 +1,643 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>RecyclerView | ruoxijun</title><meta name="keywords" content="pecyclerView,scrollView"><meta name="author" content="ruoxijun,1460662245@qq.com"><meta name="copyright" content="ruoxijun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="RecyclerView"><meta name="application-name" content="RecyclerView"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="RecyclerView"><meta property="og:url" content="http://ruoxijun.top/2020/05/15/android/RecyclerView/index.html"><meta property="og:site_name" content="ruoxijun"><meta property="og:description" content="RecyclerView 做一个简单的 recycler 1. 添加 RecyclerView 的依赖项我们需要先在 APP 的 build.gradle 文件中添加下面的代码，让配置文件将需要的库加载进来。请参考此网页,以获取最新的配置代码 1234dependencies &amp;amp;#123;"><meta property="og:locale" content="en"><meta property="og:image" content="https://www.ruoxijun.top/getRandomImageR2?_r_=3a5b247c-b85f-35d2-91ec-c04e40e1bb6d"><meta property="article:author" content="ruoxijun"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://www.ruoxijun.top/getRandomImageR2?_r_=3a5b247c-b85f-35d2-91ec-c04e40e1bb6d"><meta name="description" content="RecyclerView 做一个简单的 recycler 1. 添加 RecyclerView 的依赖项我们需要先在 APP 的 build.gradle 文件中添加下面的代码，让配置文件将需要的库加载进来。请参考此网页,以获取最新的配置代码 1234dependencies &amp;amp;#123;"><link rel="shortcut icon" href="/images/favicon.svg"><link rel="canonical" href="http://ruoxijun.top/2020/05/15/android/RecyclerView/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b3a933e91b357919bc48b2dcf700920b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-7JZFCVWT7S"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-7JZFCVWT7S');
+</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;dddccd3510d7456c85b636b70477a196&quot;}"></script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "imlr52l3x8");</script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: 'http://43.142.114.172:8080/',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    simplehomepage: false,
+    post: true
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: ruoxijun","link":"Link: ","source":"Source: ruoxijun","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'ruoxijun',
+  title: 'RecyclerView',
+  postAI: '',
+  pageFillDescription: 'RecyclerView, 做一个简单的 recycler, 1. 添加 RecyclerView 的依赖项, 2. 在 xml 使用且在 activity 中获取并设置 recyclerview, 3.适配器 RecyclerView.Adapter, 4. addItemDecoration 添加分割线, 5.事件, , 进阶与扩展, RecyclerView和ScrollView协同使用：做一个简单的添加的依赖项我们需要先在的文件中添加下面的代码让配置文件将需要的库加载进来请参考此网页以获取最新的配置代码在使用且在中获取并设置中中获取组件常规步骤抽象类主要用于布局效果自带的实现类有这里是设置布局我们先使用最简单的线性布局需要一个适配器此时我们做完这些是看不到效果的我们还需要写一个适配器适配器开始之前我们看一下适配器部分源码从源码得知我们有个必须要实现的方法且它有规定一个只接受子类的泛型方法返回该类方法需要该类的传入的适配器必须继承适配器构造方法构造方法可以自己决定一般传入需要用到的数据创建该方法会在需要展示一个的时候回调重写该方法时应该使载入的布局可以不用构造方法传参将布局实例化为了一个传入给设置数据把数据绑定填充到相应的中设置的数量没有必要再写一个文件来实现它直接使用内部类继承的内部类即可上方方法调用时也更方便这里通常写上需要改变的组件这里是的布局文件通过它获取组件这样一个简单的就完成了添加分割线抽象类主要用于给之间添加分割线官方没有实现类所以如果要添加分割线我们需要手动实现这个抽象类这里使用的方法添加并不是真正的添加了分隔线而是利用给之间增加间隔让下面的背景漏出而产生的分割线此内部类写在类中并继承在下出现间隔下划线事件最简单的方法在中利用直接给组件添加事件即可被点击事件回调方法这样自由度更高扩展性更高在适配器类中定义一个接口和该接口对象在接口中定义事件方法构造适配器对象时可接受一个该接口对象且在中给组件设置事件时方法中可以是具体内容也可以利用该接口对象使用该方法以上具体代码汇总参考地址进阶与扩展设置水平列表之前我们设置的布局默认垂直设置为水平方向网格布局获取网格布局管理器参上下文参数参表示一行有几列效果同上瀑布流布局获取瀑布流网格布局参是方向还可以是水平的增删改与移动传入的参数都是指定的位置添加中的组件新在指定位置添加并通知此单个刷新推荐使用全部刷新删除中的组件移除某并刷新更改组件中的改更改某移动组件中的将位置上的移动到位置去上和之后的组件后移根据需要不同的使用不同的布局设置视图值重写该方法根据需要返回不同的值根据不同的样式值设置不同的布局样式利用上方改写的方法根据坐标获取样式值设置两个不同的创建两个布局文件和协同使用会自动获取焦点导致打开页面时之上的控件被挤出屏幕外在的外部布局中加入如下配置表示会覆盖子类控件而直接获得焦点和一起用滑动会不流畅因为两个都有滑动事件设置下和一起用偶尔出现数据条目显示不全这是获取布局高度不准确导致建议使用相等布局将其包裹',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-28 13:53:40',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="其它"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="其它"/><span class="back-menu-item-text">其它</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">ruoxijun</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Article</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-box-archive"></use></svg><span> Tunnel</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shapes"></use></svg><span> Classification</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tags"></use></svg><span> Label</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Friend</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> Friends account</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-artstation"></use></svg><span> Moments</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-envelope"></use></svg><span> Message board</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> My</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-music"></use></svg><span> Music Hall</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> Chasing</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-images"></use></svg><span> Album Set</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-fan"></use></svg><span> Conditioning</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> About</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> Search</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://ruoxijun.pythonanywhere.com/download" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://ruoxijun.pythonanywhere.com/download"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://ruoxijun.pythonanywhere.com/download" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://ruoxijun.pythonanywhere.com/download"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/WebView/" style="font-size: 1.05rem;">WebView<sup>1</sup></a><a href="/tags/alertdialog/" style="font-size: 1.05rem;">alertdialog<sup>1</sup></a><a href="/tags/arduino/" style="font-size: 1.05rem;">arduino<sup>1</sup></a><a href="/tags/axios/" style="font-size: 1.05rem;">axios<sup>3</sup></a><a href="/tags/docker/" style="font-size: 1.05rem;">docker<sup>1</sup></a><a href="/tags/es6/" style="font-size: 1.05rem;">es6<sup>2</sup></a><a href="/tags/file/" style="font-size: 1.05rem;">file<sup>2</sup></a><a href="/tags/fragment/" style="font-size: 1.05rem;">fragment<sup>1</sup></a><a href="/tags/idea/" style="font-size: 1.05rem;">idea<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>3</sup></a><a href="/tags/jdbc/" style="font-size: 1.05rem;">jdbc<sup>1</sup></a><a href="/tags/jquery/" style="font-size: 1.05rem;">jquery<sup>1</sup></a><a href="/tags/k8s/" style="font-size: 1.05rem;">k8s<sup>1</sup></a><a href="/tags/kubernetes/" style="font-size: 1.05rem;">kubernetes<sup>1</sup></a><a href="/tags/linux/" style="font-size: 1.05rem;">linux<sup>4</sup></a><a href="/tags/lombok/" style="font-size: 1.05rem;">lombok<sup>2</sup></a><a href="/tags/markdown/" style="font-size: 1.05rem;">markdown<sup>1</sup></a><a href="/tags/maven/" style="font-size: 1.05rem;">maven<sup>1</sup></a><a href="/tags/mysql/" style="font-size: 1.05rem;">mysql<sup>1</sup></a><a href="/tags/nginx/" style="font-size: 1.05rem;">nginx<sup>1</sup></a><a href="/tags/nps/" style="font-size: 1.05rem;">nps<sup>1</sup></a><a href="/tags/pecyclerView/" style="font-size: 1.05rem;">pecyclerView<sup>1</sup></a><a href="/tags/popupwindow/" style="font-size: 1.05rem;">popupwindow<sup>1</sup></a><a href="/tags/progressBar/" style="font-size: 1.05rem;">progressBar<sup>1</sup></a><a href="/tags/python/" style="font-size: 1.05rem;">python<sup>1</sup></a><a href="/tags/scrollView/" style="font-size: 1.05rem;">scrollView<sup>1</sup></a><a href="/tags/sharedpreferences/" style="font-size: 1.05rem;">sharedpreferences<sup>1</sup></a><a href="/tags/sql/" style="font-size: 1.05rem;">sql<sup>1</sup></a><a href="/tags/sqlite/" style="font-size: 1.05rem;">sqlite<sup>1</sup></a><a href="/tags/tabLayout/" style="font-size: 1.05rem;">tabLayout<sup>1</sup></a><a href="/tags/termux/" style="font-size: 1.05rem;">termux<sup>1</sup></a><a href="/tags/toast/" style="font-size: 1.05rem;">toast<sup>1</sup></a><a href="/tags/typescript/" style="font-size: 1.05rem;">typescript<sup>1</sup></a><a href="/tags/viewpager/" style="font-size: 1.05rem;">viewpager<sup>1</sup></a><a href="/tags/vue3/" style="font-size: 1.05rem;">vue3<sup>2</sup></a><a href="/tags/wsl/" style="font-size: 1.05rem;">wsl<sup>1</sup></a><a href="/tags/zerotermux/" style="font-size: 1.05rem;">zerotermux<sup>1</sup></a><a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 1.05rem;">内网穿透<sup>1</sup></a><a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 1.05rem;">物联网<sup>1</sup></a><a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 1.05rem;">面向对象<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/03/"><span class="card-archive-list-date">March 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">July 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">February 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">September 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">August 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">January 2021</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">October 2020</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Android/" itemprop="url">Android</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/pecyclerView/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>pecyclerView</span></a><a class="article-meta__tags" href="/tags/scrollView/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>scrollView</span></a></span></div></div><h1 class="post-title" itemprop="name headline">RecyclerView</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2020-05-15T11:33:05.000Z" title="Created 2020-05-15 19:33:05">2020-05-15</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2023-08-28T05:53:40.567Z" title="Updated 2023-08-28 13:53:40">2023-08-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">Word count:</span><span class="word-count" title="文章字数">1.7k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">Reading time:</span><span>7min</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="RecyclerView"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">Post View:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为重庆"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>重庆</span><span class="post-meta-separator"></span><span class="post-meta-commentcount"><i class="anzhiyufont anzhiyu-icon-comments post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2020/05/15/android/RecyclerView/#post-comment" tabindex="-1"><span id="twikoo-count"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></a></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://www.ruoxijun.top/getRandomImageR2?_r_=3a5b247c-b85f-35d2-91ec-c04e40e1bb6d"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://ruoxijun.top/2020/05/15/android/RecyclerView/"><header><a class="post-meta-categories" href="/categories/Android/" itemprop="url">Android</a><a href="/tags/pecyclerView/" tabindex="-1" itemprop="url">pecyclerView</a><a href="/tags/scrollView/" tabindex="-1" itemprop="url">scrollView</a><h1 id="CrawlerTitle" itemprop="name headline">RecyclerView</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">ruoxijun</span><time itemprop="dateCreated datePublished" datetime="2020-05-15T11:33:05.000Z" title="Created 2020-05-15 19:33:05">2020-05-15</time><time itemprop="dateCreated datePublished" datetime="2023-08-28T05:53:40.567Z" title="Updated 2023-08-28 13:53:40">2023-08-28</time></header><h3 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a>RecyclerView</h3><blockquote>
+<h4 id="做一个简单的-recycler"><a href="#做一个简单的-recycler" class="headerlink" title="做一个简单的 recycler"></a>做一个简单的 recycler</h4></blockquote>
+<h5 id="1-添加-RecyclerView-的依赖项"><a href="#1-添加-RecyclerView-的依赖项" class="headerlink" title="1. 添加 RecyclerView 的依赖项"></a>1. 添加 RecyclerView 的依赖项</h5><p>我们需要先在 APP 的 <strong>build.gradle</strong> 文件中添加下面的代码，让配置文件将需要的库加载进来。<a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/androidx/releases/recyclerview?hl=zh_cn">请参考此网页,以获取最新的配置代码</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">        implementation <span class="string">&quot;androidx.recyclerview:recyclerview:1.1.0&quot;</span></span><br><span class="line">        implementation <span class="string">&quot;androidx.recyclerview:recyclerview-selection:1.1.0-rc01&quot;</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-在-xml-使用且在-activity-中获取并设置-recyclerview"><a href="#2-在-xml-使用且在-activity-中获取并设置-recyclerview" class="headerlink" title="2. 在 xml 使用且在 activity 中获取并设置 recyclerview"></a>2. 在 xml 使用且在 activity 中获取并设置 recyclerview</h5><ul>
+<li>xml 中：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">androidx.recyclerview.widget.RecyclerView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/recycler&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>activity 中：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取组件，常规步骤</span></span><br><span class="line">recyclerView = findViewById(R.id.recycler);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * RecyclerView.LayoutManager:抽象类主要用于Item布局效果，自带的实现类有：</span></span><br><span class="line"><span class="comment"> * LinearLayoutManager、StaggeredGridLayoutManager、GridLayoutManager。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//这里是设置布局,我们先使用最简单的线性布局</span></span><br><span class="line">recyclerView.setLayoutManager(<span class="keyword">new</span> <span class="title class_">LinearLayoutManager</span>(<span class="built_in">this</span>));</span><br><span class="line"><span class="comment">//需要一个适配器</span></span><br><span class="line">recyclerView.setAdapter(<span class="keyword">new</span> <span class="title class_">LinearAdapter</span>(<span class="built_in">this</span>));</span><br></pre></td></tr></table></figure>
+
+<p>此时我们做完这些是看不到效果的。我们还需要写一个适配器。</p>
+<h4 id="3-适配器-RecyclerView-Adapter"><a href="#3-适配器-RecyclerView-Adapter" class="headerlink" title="3.适配器 RecyclerView.Adapter"></a>3.适配器 RecyclerView.Adapter</h4><p>开始之前我们看一下适配器部分源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Adapter</span>&lt;VH <span class="keyword">extends</span> <span class="title class_">ViewHolder</span>&gt; &#123;</span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">abstract</span> VH <span class="title function_">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="type">int</span> viewType)</span>;</span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">onBindViewHolder</span><span class="params">(VH holder, <span class="type">int</span> position)</span>;</span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="type">int</span> <span class="title function_">getItemCount</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从源码得知，我们有 3 个必须要实现的方法。且它有规定一个只接受 ViewHolder 子类的泛型，方法 1 返回该类，方法 2 需要该类的传入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//RecyclerView的适配器必须继承RecyclerView.Adapter</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinearAdapter</span> <span class="keyword">extends</span> <span class="title class_">RecyclerView</span>.Adapter&lt;LinearAdapter.LinearHolder&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**适配器构造方法：</span></span><br><span class="line"><span class="comment">     * 构造方法可以自己决定，一般传入需要用到的数据。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LinearAdapter</span><span class="params">(Context context)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.context = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**onCreateViewHolder创建ViewHolder，</span></span><br><span class="line"><span class="comment">     * 该方法会在RecyclerView需要展示一个item的时候回调。</span></span><br><span class="line"><span class="comment">     * 重写该方法时，应该使ViewHolder载入item view的布局</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> LinearAdapter.LinearHolder <span class="title function_">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="type">int</span> viewType)</span> &#123;</span><br><span class="line">        <span class="comment">//from(parent.getContext())可以不用构造方法传参</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">LinearHolder</span>(LayoutInflater.from(context)</span><br><span class="line">                .inflate(R.layout.item,parent,<span class="literal">false</span>));</span><br><span class="line">        <span class="comment">//inflate将布局实例化为了一个view传入</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**onBindViewHolder</span></span><br><span class="line"><span class="comment">     * 给item设置数据，把数据绑定、填充到相应的item中</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> LinearAdapter.LinearHolder holder, <span class="type">int</span> position)</span> &#123;</span><br><span class="line">        holder.textView.setText(<span class="string">&quot;Item&quot;</span>);</span><br><span class="line">        holder.imageView.setImageResource(R.drawable.ic_launcher_background);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置item的数量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getItemCount</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**ViewHolder没有必要再写一个java文件来实现它，</span></span><br><span class="line"><span class="comment">     * 直接使用内部类继承RecyclerView的内部类ViewHolder即可，</span></span><br><span class="line"><span class="comment">     * 上方方法调用时也更方便</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">LinearHolder</span> <span class="keyword">extends</span> <span class="title class_">RecyclerView</span>.ViewHolder&#123;</span><br><span class="line">        <span class="keyword">private</span> ImageView imageView;</span><br><span class="line">        <span class="keyword">private</span> TextView textView;</span><br><span class="line">        <span class="comment">//这里通常写上需要改变的组件</span></span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">LinearHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> &#123;</span><br><span class="line">            <span class="built_in">super</span>(itemView);</span><br><span class="line">            <span class="comment">//这里itemview是item的布局文件，通过它获取组件</span></span><br><span class="line">            textView = itemView.findViewById(R.id.textView);</span><br><span class="line">            imageView = itemView.findViewById(R.id.imageView);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样一个简单的 RecyclerView 就完成了。</p>
+<h4 id="4-addItemDecoration-添加分割线"><a href="#4-addItemDecoration-添加分割线" class="headerlink" title="4. addItemDecoration 添加分割线"></a>4. addItemDecoration 添加分割线</h4><blockquote>
+<p>RecyclerView.ItemDecoration:抽象类，主要用于给 Item 之间添加分割线。官方没有实现类，所以如果要添加分割线，我们需要手动实现这个抽象类。这里使用的 <strong><em>getItemOffsets</em></strong> 方法添加，并不是真正的添加了分隔线而是利用给 item 之间 <strong>增加间隔</strong> ，让下面的 <strong>背景</strong> 漏出而产生的分割线。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">recyclerView.addItemDecoration(<span class="keyword">new</span> <span class="title class_">MyDecoration</span>());</span><br><span class="line">---------------------------------------------------------</span><br><span class="line"><span class="comment">//此内部类写在类中并继承RecyclerView.ItemDecoration</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyDecoration</span> <span class="keyword">extends</span> <span class="title class_">RecyclerView</span>.ItemDecoration&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getItemOffsets</span><span class="params">(<span class="meta">@NonNull</span> Rect outRect, <span class="meta">@NonNull</span> View view, <span class="meta">@NonNull</span> RecyclerView parent, <span class="meta">@NonNull</span> RecyclerView.State state)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.getItemOffsets(outRect, view, parent, state);</span><br><span class="line">        <span class="comment">//在下出现1dp间隔(下划线)</span></span><br><span class="line">        outRect.bottom=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-事件"><a href="#5-事件" class="headerlink" title="5.事件"></a>5.事件</h4><ul>
+<li>最简单的方法：在 onBindViewHolder 中，利用 holder 直接给组件添加事件即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> LinearAdapter.LinearHolder holder, <span class="keyword">final</span> <span class="type">int</span> position)</span> &#123;</span><br><span class="line">    holder.imageView.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">            Toast.makeText(context, position+<span class="string">&quot;b被点击&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>事件回调方法：这样自由度更高，扩展性更高。<blockquote>
+<ul>
+<li>在适配器类中定义一个接口和该接口对象，在接口中定义事件方法</li>
+<li>构造适配器对象时，可接受一个该接口对象。</li>
+<li>且在 onBindViewHolder 中给组件设置事件时方法中可以是具体内容也可以利用该接口对象使用该方法。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="以上具体代码汇总参考地址"><a href="#以上具体代码汇总参考地址" class="headerlink" title="以上具体代码汇总参考地址"></a><a target="_blank" rel="noopener" href="http://note.youdao.com/noteshare?id=e46eb0aa308a609cffd6cabb5a98396e&sub=F07A2A91AF474B74A4D0F3A435019B9D">以上具体代码汇总参考地址</a></h3><h4 id="进阶与扩展"><a href="#进阶与扩展" class="headerlink" title="进阶与扩展"></a>进阶与扩展</h4><ul>
+<li>设置水平列表：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//之前我们设置的布局，默认垂直</span></span><br><span class="line"><span class="type">LinearLayoutManager</span> <span class="variable">layout</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LinearLayoutManager</span>(<span class="built_in">this</span>);</span><br><span class="line"><span class="comment">//设置为水平方向</span></span><br><span class="line">layout.setOrientation(RecyclerView.HORIZONTAL);</span><br><span class="line">recyclerHor.setLayoutManager(layout);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>网格布局：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取网格布局管理器，参1上下文参数，参2表示一行有几列</span></span><br><span class="line">GridLayoutManager grid=<span class="keyword">new</span> <span class="title class_">GridLayoutManager</span>(<span class="built_in">this</span>,<span class="number">4</span>);</span><br><span class="line">recyclerGrid.setLayoutManager(grid);</span><br><span class="line"><span class="comment">//recyclerGrid.setLayoutManager(new GridLayoutManager(this,4););//效果同上</span></span><br><span class="line">recyclerGrid.setAdapter(<span class="keyword">new</span> <span class="title class_">GridAdapter</span>());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>瀑布流布局：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取瀑布流网格布局，参2是方向还可以是水平</span></span><br><span class="line">StaggeredGridLayoutManager stagger=<span class="keyword">new</span></span><br><span class="line">        <span class="title class_">StaggeredGridLayoutManager</span>(<span class="number">2</span>,StaggeredGridLayoutManager.VERTICAL);</span><br><span class="line">recyclerStagger.setLayoutManager(stagger);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>item 的增删改与移动：(传入的参数都是指定的位置 position)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加RecyclerView中的item组件</span></span><br><span class="line">list.add(list.size()+<span class="string">&quot;新&quot;</span>);</span><br><span class="line"><span class="comment">//在指定位置添加item，并通知此item(单个)刷新(推荐使用)</span></span><br><span class="line">recyclerAdapter.notifyItemInserted(list.size()-<span class="number">1</span>);</span><br><span class="line"><span class="comment">//recyclerAdapter.notifyDataSetChanged();//全部刷新</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//删除RecyclerView中的item组件</span></span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(list.size());</span><br><span class="line">list.remove(i);</span><br><span class="line">recyclerAdapter.notifyItemRemoved(i);<span class="comment">//移除某item并刷新</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//更改RecyclerView组件中的item</span></span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(list.size());</span><br><span class="line">list.set(i,i+<span class="string">&quot;改&quot;</span>);</span><br><span class="line">recyclerAdapter.notifyItemChanged(i);<span class="comment">//更改某item</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//移动RecyclerView组件中的item</span></span><br><span class="line"><span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(list.size());</span><br><span class="line"><span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(list.size());</span><br><span class="line"><span class="comment">//将start位置上的item移动到end位置去，end上和之后的组件后移</span></span><br><span class="line">recyclerAdapter.notifyItemMoved(start,end);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根据需要不同的view使用不同的布局<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置视图值(重写该方法，根据需要返回不同的值)</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getItemViewType</span><span class="params">(<span class="type">int</span> position)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (position%<span class="number">2</span>==<span class="number">0</span>)&#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> RecyclerView.ViewHolder <span class="title function_">onCreateViewHolder</span><span class="params">(<span class="meta">@NonNull</span> ViewGroup parent, <span class="type">int</span> viewType)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (viewType==<span class="number">0</span>)<span class="comment">//根据不同的样式值设置不同的布局样式</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ViewHolder</span>(LayoutInflater.from(parent.getContext())</span><br><span class="line">                .inflate(R.layout.item,parent,<span class="literal">false</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ImgViewHolder</span>(LayoutInflater.from(parent.getContext())</span><br><span class="line">            .inflate(R.layout.item_stagger,parent,<span class="literal">false</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onBindViewHolder</span><span class="params">(<span class="meta">@NonNull</span> RecyclerView.ViewHolder holder, <span class="type">int</span> position)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (getItemViewType(position)==<span class="number">0</span>) &#123;<span class="comment">//利用上方改写的方法，根据坐标获取样式值</span></span><br><span class="line">        ((ViewHolder) holder).textView.setText(<span class="string">&quot;Demo &quot;</span> + position);</span><br><span class="line">        ((ViewHolder) holder).imageView.setImageResource(R.drawable.ic_launcher_background);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置两个不同的Holder(创建两个item.xml布局文件)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ViewHolder</span> <span class="keyword">extends</span> <span class="title class_">RecyclerView</span>.ViewHolder&#123;</span><br><span class="line">    <span class="keyword">private</span> TextView textView;</span><br><span class="line">    <span class="keyword">private</span> ImageView imageView;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ViewHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(itemView);</span><br><span class="line">        textView = itemView.findViewById(R.id.textView);</span><br><span class="line">        imageView = itemView.findViewById(R.id.imageView);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ImgViewHolder</span> <span class="keyword">extends</span> <span class="title class_">RecyclerView</span>.ViewHolder&#123;</span><br><span class="line">        <span class="keyword">private</span> ImageView imageView;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ImgViewHolder</span><span class="params">(<span class="meta">@NonNull</span> View itemView)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(itemView);</span><br><span class="line">        imageView = itemView.findViewById(R.id.imageView);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="RecyclerView和ScrollView协同使用："><a href="#RecyclerView和ScrollView协同使用：" class="headerlink" title="RecyclerView和ScrollView协同使用："></a>RecyclerView和ScrollView协同使用：</h3><ul>
+<li>RecyclerView会自动获取焦点，导致打开页面时RecyclerView之上的控件被RecyclerView挤出屏幕外。在RecyclerView的外部布局中加入如下配置，表示viewgroup会覆盖子类控件而直接获得焦点。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:descendantFocusability=&quot;blocksDescendants&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>RecyclerView和ScrollView 一起用，滑动会不流畅，因为两个都有滑动事件，设置下:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">recyclerView.setNestedScrollingEnabled(<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>RecyclerView和ScrollView 一起用，偶尔出现数据条目显示不全这是RecyclerView获取布局高度不准确导致，建议使用相等布局将其包裹：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">androidx.recyclerview.widget.RecyclerView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">ruoxijun</div><div class="post-copyright__author_desc">若惜君</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://ruoxijun.top/2020/05/15/android/RecyclerView/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://ruoxijun.top/2020/05/15/android/RecyclerView/')">RecyclerView</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://ruoxijun.top/2020/05/15/android/RecyclerView/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=RecyclerView&amp;url=http://ruoxijun.top/2020/05/15/android/RecyclerView/&amp;pic=https://www.ruoxijun.top/getRandomImageR2?_r_=3a5b247c-b85f-35d2-91ec-c04e40e1bb6d" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/pecyclerView/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>pecyclerView<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/scrollView/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>scrollView<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://www.ruoxijun.top/getRandomImageR2?_r_=50c7af16-843d-8bf7-e69b-ada8cf51eee2" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/05/15/java/collection/list/"><img class="prev-cover" src="https://www.ruoxijun.top/getRandomImageR2?_r_=9b600683-ddea-6e46-f377-82feca746a00" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">List 集合</div></div></a></div><div class="next-post pull-right"><a href="/2020/05/17/android/webview/"><img class="next-cover" src="https://www.ruoxijun.top/getRandomImageR2?_r_=9e1db01e-9375-6422-3f4d-0dfcd7d2f5af" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">WebView 加载网页组件</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Waline</span></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"><span>最是人间留不住，<br/>朱颜辞镜花辞树。<span></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">ruoxijun</h1><div class="author-info__desc">若惜君</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://ruoxijun.top/" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#RecyclerView"><span class="toc-number">1.</span> <span class="toc-text">RecyclerView</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%9A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-recycler"><span class="toc-number">1.1.</span> <span class="toc-text">做一个简单的 recycler</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%B7%BB%E5%8A%A0-RecyclerView-%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 添加 RecyclerView 的依赖项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%9C%A8-xml-%E4%BD%BF%E7%94%A8%E4%B8%94%E5%9C%A8-activity-%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%B9%B6%E8%AE%BE%E7%BD%AE-recyclerview"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 在 xml 使用且在 activity 中获取并设置 recyclerview</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%80%82%E9%85%8D%E5%99%A8-RecyclerView-Adapter"><span class="toc-number">1.2.</span> <span class="toc-text">3.适配器 RecyclerView.Adapter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-addItemDecoration-%E6%B7%BB%E5%8A%A0%E5%88%86%E5%89%B2%E7%BA%BF"><span class="toc-number">1.3.</span> <span class="toc-text">4. addItemDecoration 添加分割线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">5.事件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8A%E5%85%B7%E4%BD%93%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB%E5%8F%82%E8%80%83%E5%9C%B0%E5%9D%80"><span class="toc-number">2.</span> <span class="toc-text">以上具体代码汇总参考地址</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E4%B8%8E%E6%89%A9%E5%B1%95"><span class="toc-number">2.1.</span> <span class="toc-text">进阶与扩展</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RecyclerView%E5%92%8CScrollView%E5%8D%8F%E5%90%8C%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">RecyclerView和ScrollView协同使用：</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/29/java/springboot/mybatisplus/" title="MyBatis-Plus"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=50c7af16-843d-8bf7-e69b-ada8cf51eee2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatis-Plus"/></a><div class="content"><a class="title" href="/2023/04/29/java/springboot/mybatisplus/" title="MyBatis-Plus">MyBatis-Plus</a><time datetime="2023-04-29T02:10:14.000Z" title="Created 2023-04-29 10:10:14">2023-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/29/java/springboot/SpringSecurity/" title="SpringSecurity"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=e0e7efff-1060-0902-9936-f1cf014154fd" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringSecurity"/></a><div class="content"><a class="title" href="/2023/04/29/java/springboot/SpringSecurity/" title="SpringSecurity">SpringSecurity</a><time datetime="2023-04-29T02:10:14.000Z" title="Created 2023-04-29 10:10:14">2023-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/20/interest/Arduino/" title="Arduino"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=36dfeef1-538b-2417-b455-b36a26833d3c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Arduino"/></a><div class="content"><a class="title" href="/2023/04/20/interest/Arduino/" title="Arduino">Arduino</a><time datetime="2023-04-20T12:43:00.000Z" title="Created 2023-04-20 20:43:00">2023-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/15/interest/Termux/" title="ZeroTermux"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=7d43e6f9-1a77-140b-ac51-1ca1928dbf8b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ZeroTermux"/></a><div class="content"><a class="title" href="/2023/04/15/interest/Termux/" title="ZeroTermux">ZeroTermux</a><time datetime="2023-04-15T12:45:00.000Z" title="Created 2023-04-15 20:45:00">2023-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/02/interest/%E4%BA%91%E5%8E%9F%E7%94%9F/" title="云原生"><img src="https://www.ruoxijun.top/getRandomImageR2?_r_=a313731c-fdfe-8105-173d-511ec8f537cd" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="云原生"/></a><div class="content"><a class="title" href="/2023/04/02/interest/%E4%BA%91%E5%8E%9F%E7%94%9F/" title="云原生">云原生</a><time datetime="2023-04-02T02:04:00.000Z" title="Created 2023-04-02 10:04:00">2023-04-02</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://bu.dusays.com/2021/01/15/078d1936ddf32.png" alt="大佬带我~" title="大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="ruoxijun" target="_blank">ruoxijun</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = []
+        sub.unshift(data.hitokoto, from)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = data.hitokoto
+      }
+    })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" href="https://ruoxijun.top/" title="湘ICP备-不备案号">湘ICP备-不备案号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">48</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">117</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">10</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://ruoxijun.top/" title="其它"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="其它"/><span class="back-menu-item-text">其它</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Article</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-box-archive"></use></svg><span> Tunnel</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shapes"></use></svg><span> Classification</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tags"></use></svg><span> Label</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Friend</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> Friends account</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-artstation"></use></svg><span> Moments</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-envelope"></use></svg><span> Message board</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> My</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-music"></use></svg><span> Music Hall</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> Chasing</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-images"></use></svg><span> Album Set</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-fan"></use></svg><span> Conditioning</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> About</span></a></div></div><span class="sidebar-menu-item-title">标签</span></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("04/01/2021 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://bu.dusays.com/2021/01/15/078d1936ddf32.png";
+        img.title = "嘿嘿~";
+        img.alt = "嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'http://43.142.114.172:8080/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'http://43.142.114.172:8080/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initWaline = () => {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://blog-waline-b3qy7x4i1-ruoxijun.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: true,
+    }, {"pageSize":10,"requiredMeta":["nick","mail"],"login":"enable","copyright":true,"locale":{"admin":"若惜君","sofa":"好像什么都没有诶~~~","placeholder":"悄悄的说句话~~~"}}))
+  }
+
+  const loadWaline = async () => {
+    if (typeof Waline === 'object') initWaline()
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@2.15.5/dist/waline.css')
+      await getScript('https://cdn.cbd.int/@waline/client@2.15.5/dist/waline.js')
+      initWaline()
+    }
+  }
+
+  if ('Twikoo' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'http://43.142.114.172:8080/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.25/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "visitor@anheyu.com";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: true,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', 'G-7JZFCVWT7S', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
